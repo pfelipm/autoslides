@@ -1,0 +1,72 @@
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+  
+  // Evento de documento listo
+  $(function() {
+  
+      // Inicialiar todos los componententes Materialize
+      
+      M.AutoInit();
+  
+      // Asignar manejador botón guardar cambios
+      
+      $('#botonGuardar').prop('disabled', true);
+      $('#botonGuardar').click(on_botonGuardar);
+      $('#botonReset').click(on_botonReset);
+      
+      // Reactivar botón en cuanto se modifica algún ajuste
+      $('input').change(() =>  {$('#botonGuardar').prop('disabled', false);})  
+      
+  });
+  
+  function on_botonGuardar() {
+    
+    // Desactivar botón
+    
+    $('#botonGuardar').prop('disabled', true);
+    
+    // Devolver valores a servidor, se pasa objeto DOM form como parámetro directamente
+    
+    google.script.run
+      .withSuccessHandler(function() {
+        M.toast({html: '✔️ Ajustes guardados'});
+        $('#botonGuardar').prop('disabled', true);
+        // google.script.host.close();
+      })
+      .withFailureHandler(function() {
+        M.toast({html: '❌ Error al realizar la operación'});
+        $('#botonGuardar').prop('disabled', false);
+      })
+      .actualizarAjustes($('#formConfigurar').get(0));
+  }
+  
+  function on_botonReset() {
+
+  // Reajustar valores de configuración por defecto
+  
+    google.script.run
+      .withSuccessHandler(function(ajustes) {
+        M.toast({html: '✔️ Ajustes originales restablecidos'});
+        $('#sAvanzar').prop('value', ajustes.sAvanzar);
+        $('#sRecargar').prop('value', ajustes.sRecargar);
+        $('#msFundido').prop('value', ajustes.msFundido);
+        $('#iniciar').prop('checked', ajustes.iniciar == 'on' ? true : false);
+        $('#repetir').prop('checked', ajustes.repetir == 'on' ? true : false);
+        $('#eliminarMenu').prop('checked', ajustes.eliminarMenu == 'on' ? true : false);
+        $('#eliminarBandas').prop('checked', ajustes.eliminarBandas == 'on' ? true : false);
+        $('#eliminarBordes').prop('checked', ajustes.eliminarBordes == 'on' ? true : false);
+        $('#botonGuardar').prop('disabled', true);
+      })
+      .withFailureHandler(function() {
+        M.toast({html: '❌ Error al realizar la operación'});
+      })
+      .ajustesPorDefecto();  
+  
+  }
+    
+</script>

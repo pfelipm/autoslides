@@ -40,10 +40,17 @@ La presentación publicada, visible en la ventana del navegador (derecha), refle
 
 ![AutoSlides demo](https://user-images.githubusercontent.com/12829262/74866819-c6beb780-5353-11ea-9591-918299d3ccb0.gif)
 
-Podríamos mostrar la versión publicada a pantalla completa en un **monitor visible en un espacio público** o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
+Podríamos mostrar la versión publicada a pantalla completa en un **monitor visible en un espacio público** (al hacer clic sobre la presentación y pulsar `F11` se pasa a una vista de pantalla completa, sin elementos accesorios) o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
 
 ![Test incrustación AutoSlides](https://user-images.githubusercontent.com/12829262/74867638-50bb5000-5355-11ea-96c4-7e2a8ea60426.gif)
 
+Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegadorsin dejar bandas negras. También puede, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
+
+![AutoSlides responsive recorte](https://user-images.githubusercontent.com/12829262/74868847-31252700-5357-11ea-876e-b17852c0af3f.gif)
+
+Aprecia la diferencia que existe entre la inserción convencional (abajo) y la de AutoSlides (arriba).
+
+![screenshot-sites google com-2020 02 19-20_39_47](https://user-images.githubusercontent.com/12829262/74869376-261ec680-5358-11ea-8f68-f9b842629044.png)
 
 # Instrucciones de uso
 

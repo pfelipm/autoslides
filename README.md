@@ -28,7 +28,7 @@ Claro que sí.
 
 Partimos de la hoja de cálculo [AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Como verás, contiene 5 gráficos distintos cuyos datos de origen podrían proceder de fuentes diversas: formularios, información importada de otras hojas de cálculo, valores numéricos introducidos directamente por el usuario...
 
-Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y podrían alterarse como consecuencia de variaciones en sus datos de origen. En ese caso será necesario actualizarlos en la presentación utilizando las funciones del menú contextual de gráfico vinculado.
+Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y podrían alterarse como consecuencia de variaciones en sus datos de origen. En ese caso será necesario actualizarlos en la presentación utilizando las funciones del menú contextual del gráfico vinculado.
 
 ![AutoSlides vincular gráfico](https://user-images.githubusercontent.com/12829262/74864106-48601680-534f-11ea-8aa5-17bfecbb84cf.gif)
 

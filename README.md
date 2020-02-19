@@ -7,7 +7,7 @@ Las presentaciones de Google disponen de una función de publicación que facili
 
 # ¿Qué puede hacer AutoSlides?
 AutoSlide dispone de las siguientes características y funciones:
-+ Publicación de la presentación (de modo análogo a :computer_mouse: `Archivo` > `Publicar`) e incrustarla por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar el estado de publicación utilizando los propios menús del script.
++ Publicación de la presentación (de modo análogo a :computer_mouse: `Archivo` > `Publicar`) e incrustación por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar el estado de publicación utilizando los propios menús del script.
 + Actualización automática de la presentación incrustada a intervalos escogidos por el usuario, utilizando una transición suave al recargarla. De este modo se pueden introducir modificaciones en las diapositivas, que acabarán siendo visualizadas en cualquier soporte web donde se esté mostrando la webapp.
 + Incrustación totalmente responsive, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:

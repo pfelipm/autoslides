@@ -59,7 +59,9 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 ¿La cosa queda ya más clara? Pues veamos cómo puedes utilizar AutoSlides para publicar tus presentaciones, paso a paso.
 
 # Instrucciones de uso
-1. Obtén una copia de la plantilla de AutoSlides haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
-1. Espera a que aparezca el menú de AutoSlides y haz clic en `🔄 AutoSlides` > `🌐 Obtener URL público`.
+1. Obtén una copia de la **plantilla de AutoSlides** haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
+1. Edita tu presentación del modo habitual.
+1. Haz clic en `🔄 AutoSlides` > `🌐 Obtener URL público`.
+1. Cuanto estés listo para publicarla, haz clic en `🔄 AutoSlides` > `⚙️ Configurar` y establece los ajustes de publicación, que determinarán como se visualizará tu presentación.
 ![Selección_999(219)](https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png)
-
+1. Sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que seguirlo una vez (por cada presentación en la que uses AutoSlides).

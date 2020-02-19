@@ -25,4 +25,4 @@ AutoSlide dispone de las siguientes características y funciones:
 
 # No he entendido nada ¿podría ver un ejemplo?
 Claro que sí.
-Partimos de la hoja de cálculo ![AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Contiene 5 gráficos distintos.
+Partimos de la hoja de cálculo [AutoSlides # origen (demo](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Contiene 5 gráficos distintos.

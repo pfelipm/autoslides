@@ -7,7 +7,7 @@ Las presentaciones de Google disponen de una función de publicación que facili
 
 # ¿Qué puede hacer AutoSlides?
 AutoSlide dispone de las siguientes características y funciones:
-+ Publicación de la presentación (de modo análogo a :computer_mouse: `Archivo` > `Publicar`) e incrustación por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar su estado de publicación utilizando los propios menús del script.
++ Publicación de la presentación (de modo análogo a :computer_mouse: `Archivo` > `Publicar`) e incrustación por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar su estado de publicación utilizando los propios menús de AutoSlides.
 + Actualización automática de la presentación incrustada a intervalos establecidos por el usuario, utilizando una transición suave al recargarla. De este modo se pueden introducir modificaciones en las diapositivas, que acabarán siendo visualizadas en cualquier soporte web donde se esté mostrando la webapp.
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
@@ -22,3 +22,6 @@ AutoSlide dispone de las siguientes características y funciones:
 + Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script (`refrescarGraficosHdc`) para actualizar también estos gráficos a intervalos específicos.
 
 ![Diagrama AutoSlides](https://docs.google.com/drawings/d/e/2PACX-1vQmJbOnDrP2xuUAy6ffHRCBlZDgRKOh4ZEO2WFwbTal9Celksl7lL659P2P5AwAgdOStqMcJVpAncK9/pub?w=1059&h=346)
+
+# No he entendido nada ¿podría ver un ejemplo?
+

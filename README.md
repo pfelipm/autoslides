@@ -1,6 +1,6 @@
 ![Banner acercaDe 300p](https://user-images.githubusercontent.com/12829262/74842491-cb22aa80-532a-11ea-8116-150ef294bd59.png)
 # ¿Qué es AutoSlides?
-AutoSlides es una **plantilla de presentaciónes** de Google potenciada con código Apps Script diseñada para ser utilizada en **puntos de información desatendidos**, aunque también puede usarse como medio informativo, enlazado o incrustado, en cualquier sitio web. 
+AutoSlides es una **plantilla de presentaciones** de Google potenciada con código Apps Script diseñada para ser utilizada en **puntos de información desatendidos**, aunque también puede usarse como medio informativo, enlazado o incrustado, en cualquier sitio web. 
 
 # ¿Por qué AutoSlides?
 Las presentaciones de Google disponen de una función de publicación que facilita su difusión. De este modo pueden enlazarse o incrustarse en medios web con facilidad. No obstante, si se modifican las disapositivas de la presentación es necesario recargar la página que contiene sus versiones publicadas en el navegador para que estos cambios se manifiesten. AutoSlides es capaz de generar un pase de diapositivas auto hospedado, visible utilizando un navegador, que se **refresca automáticamente** a intervalos prefijados sin necesidad de recargar la página web de manera manual en el navegador.
@@ -23,7 +23,7 @@ AutoSlide dispone de las siguientes características y funciones:
 
 ![Diagrama AutoSlides](https://docs.google.com/drawings/d/e/2PACX-1vQmJbOnDrP2xuUAy6ffHRCBlZDgRKOh4ZEO2WFwbTal9Celksl7lL659P2P5AwAgdOStqMcJVpAncK9/pub?w=1059&h=346)
 
-# No he entendido nada ¿podría ver un ejemplo?
+# No he entendido nada ¿me pones un ejemplo?
 Claro que sí.
 Partimos de la hoja de cálculo [AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Como verás, contiene 5 gráficos distintos cuyos datos de origen podrían proceder de fuentes diversas: formularios, información importada de otras hojas de cálculo, valores numéricos introducidos directamente por el usuario...
 
@@ -34,3 +34,10 @@ Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](http
 AutoSlides es capaz de publicar la presentación y generar una página web con ella incrustada.
 
 ![AutoSlides (demo) - Presentaciones de Google](https://user-images.githubusercontent.com/12829262/74864895-8f024080-5350-11ea-8a90-a9800b2bc2d5.gif)
+
+La presentación publicada, visible en la ventana del navegador (derecha), reflejará los cambios que eventualmente se vayan produciendo en la vista de edición (izquierda) sin que el usuario que la visualiza deba recargar la página. Podemos mostrar la versión publicada a pantalla completa en un monitor visible en un espacio público o simplemente incrustar presentación publicada por AutoSlides en una página web informativa.
+
+![AutoSlides demo](https://user-images.githubusercontent.com/12829262/74866819-c6beb780-5353-11ea-9591-918299d3ccb0.gif)
+
+# Instrucciones de uso
+

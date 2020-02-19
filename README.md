@@ -1,4 +1,4 @@
-![Banner acercaDe 300p](https://user-images.githubusercontent.com/12829262/74842491-cb22aa80-532a-11ea-8116-150ef294bd59.png)
+![74842491-cb22aa80-532a-11ea-8116-150ef294bd59](https://user-images.githubusercontent.com/12829262/74886021-4d38c080-5377-11ea-8c70-1e03bf4c2231.png)
 # ¿Qué es AutoSlides?
 AutoSlides es una **plantilla de presentaciones** de Google potenciada con código Apps Script diseñada para ser utilizada en **puntos de información desatendidos**, aunque también puede usarse como elemento informativo, enlazado o incrustado, en cualquier sitio web. 
 
@@ -60,4 +60,4 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 
 # Instrucciones de uso
 1. Obtén una copia de la plantilla de AutoSlides haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
-1. 
+1. Espera a que aparezca el menú de AutoSlides

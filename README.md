@@ -52,7 +52,7 @@ Aprecia la diferencia que existe entre la inserción convencional (abajo) y la d
 
 ![screenshot-sites google com-2020 02 19-20_39_47](https://user-images.githubusercontent.com/12829262/74869376-261ec680-5358-11ea-8f68-f9b842629044.png)
 
-Por último, si el usuario crea un activador GAS que se dispare por tiempo y ejecute la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, a intervalos específicos lograremos que cualquier alteración en los gráficos vinculados de la presentación se propague a su versión publicada. Por ejemplo, aquí se realiza esta operación para conseguir su actualización con una frecuencia de 5 minutos.
+Por último, si el usuario crea un activador GAS que se dispare por tiempo y ejecute a ciertos intervalos la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, lograremos que cualquier cambio en los gráficos vinculados de la presentación se propague a su versión publicada. Por ejemplo, aquí se realiza esta operación para conseguir su actualización con una frecuencia de 5 minutos.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74872656-f5419000-535d-11ea-9290-742381fa83d1.gif"></p>
 

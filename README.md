@@ -14,3 +14,4 @@ AutoSlides es una **plantilla de presentación** de Google potenciada con códig
   + Eliminación de las bandas laterales negras habituales en las presentaciones incrustadas (sí / no).
   + Eliminación del borde del marco de incrustación (sí / no).
 + Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará un mensaje dando instrucciones para que el usuario cree, si lo desea, un activador por tiempo que deberá vincularse a una función específica del script para actualizar también estos gráficos a intervalos específicos.
+![Diagrama AutoSlides](https://docs.google.com/drawings/d/e/2PACX-1vQmJbOnDrP2xuUAy6ffHRCBlZDgRKOh4ZEO2WFwbTal9Celksl7lL659P2P5AwAgdOStqMcJVpAncK9/pub?w=1059&h=346)

@@ -46,7 +46,7 @@ Podríamos mostrar la versión publicada a pantalla completa en un **monitor vis
 
 Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegador sin dejar bandas negras. También puede, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
 
-![AutoSlides responsive recorte](https://user-images.githubusercontent.com/12829262/74868847-31252700-5357-11ea-876e-b17852c0af3f.gif)
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74868847-31252700-5357-11ea-876e-b17852c0af3f.gif"></p>
 
 Aprecia la diferencia que existe entre la inserción convencional (abajo) y la de AutoSlides (arriba).
 

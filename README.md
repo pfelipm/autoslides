@@ -54,7 +54,7 @@ Aprecia la diferencia que existe entre la inserción convencional (abajo) y la d
 
 Por último, si el usuario crea un activador GAS que se dispare por tiempo y ejecute la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, a intervalos específicos lograremos que cualquier alteración en los gráficos vinculados de la presentación se propague a su versión publicada. Por ejemplo, aquí se realiza esta operación para conseguir su actualización con una frecuencia de 5 minutos.
 
-![AutoSlides trigger lq](https://user-images.githubusercontent.com/12829262/74870995-fcb36a00-535a-11ea-9fe4-b845b30a1669.gif)
+<center>![AutoSlides trigger lq](https://user-images.githubusercontent.com/12829262/74870995-fcb36a00-535a-11ea-9fe4-b845b30a1669.gif)</center>
 
 ¿La cosa queda ya más clara? Pues veamos cómo puedes utilizar AutoSlides para publicar tus presentaciones, paso a paso.
 

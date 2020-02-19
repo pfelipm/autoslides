@@ -23,12 +23,12 @@ AutoSlide dispone de las siguientes características y funciones:
 
 ![Diagrama AutoSlides](https://docs.google.com/drawings/d/e/2PACX-1vQmJbOnDrP2xuUAy6ffHRCBlZDgRKOh4ZEO2WFwbTal9Celksl7lL659P2P5AwAgdOStqMcJVpAncK9/pub?w=1059&h=346)
 
-# No he entendido nada ¿me pones un ejemplo?
+# No he entendido gran cosa ¿me pones un ejemplo?
 Claro que sí.
 
 Partimos de la hoja de cálculo [AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Como verás, contiene 5 gráficos distintos cuyos datos de origen podrían proceder de fuentes diversas: formularios, información importada de otras hojas de cálculo, valores numéricos introducidos directamente por el usuario...
 
-Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y podrían alterarse como consecuencia de variaciones en sus datos de origen. En ese caso será necesario actualizarlos en la presentación utilizando las funciones del menú contextual del gráfico vinculado.
+Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y podrían alterarse como consecuencia de variaciones en sus datos de origen. En ese caso es necesario, de manera habitual, actualizarlos en la presentación utilizando las funciones del menú contextual del gráfico vinculado.
 
 ![AutoSlides vincular gráfico](https://user-images.githubusercontent.com/12829262/74864106-48601680-534f-11ea-8aa5-17bfecbb84cf.gif)
 
@@ -44,13 +44,19 @@ Podríamos mostrar la versión publicada a pantalla completa en un **monitor vis
 
 ![Test incrustación AutoSlides](https://user-images.githubusercontent.com/12829262/74867638-50bb5000-5355-11ea-96c4-7e2a8ea60426.gif)
 
-Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegadorsin dejar bandas negras. También puede, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
+Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegador sin dejar bandas negras. También puede, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
 
 ![AutoSlides responsive recorte](https://user-images.githubusercontent.com/12829262/74868847-31252700-5357-11ea-876e-b17852c0af3f.gif)
 
 Aprecia la diferencia que existe entre la inserción convencional (abajo) y la de AutoSlides (arriba).
 
 ![screenshot-sites google com-2020 02 19-20_39_47](https://user-images.githubusercontent.com/12829262/74869376-261ec680-5358-11ea-8f68-f9b842629044.png)
+
+Por último, si el usuario crea un activador GAS que se dispare por tiempo y ejecute la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, a intervalos específicos lograremos que cualquier alteración en los gráficos vinculados de la presentación se propague a su versión publicada. Por ejemplo, aquí se realiza esta operación para conseguir su actualización con una frecuencia de 5 minutos.
+
+![AutoSlides trigger lq](https://user-images.githubusercontent.com/12829262/74870995-fcb36a00-535a-11ea-9fe4-b845b30a1669.gif)
+
+¿La cosa queda ya más clara? Pues veamos cómo puedes utilizar AutoSlides para publicar tus presentaciones, paso a paso.
 
 # Instrucciones de uso
 

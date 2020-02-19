@@ -26,6 +26,7 @@ AutoSlide dispone de las siguientes características y funciones:
 # No he entendido nada ¿podría ver un ejemplo?
 Claro que sí.
 Partimos de la hoja de cálculo [AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Como verás, contiene 5 gráficos distintos cuyos datos de origen puede proceder de fuentes diversas: formularios, información importada de otras hojas de cálculo, introducida directamente por el usuario...
+
 Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview). Si estos gráficos cambian como consecuencia de variaciones en sus datos de origen es necesario utilizar su menú contextual para refrescarlos.
 ![AutoSlides vincular gráfico](https://user-images.githubusercontent.com/12829262/74864106-48601680-534f-11ea-8aa5-17bfecbb84cf.gif)
 

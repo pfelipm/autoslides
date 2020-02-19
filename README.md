@@ -25,6 +25,7 @@ AutoSlide dispone de las siguientes características y funciones:
 
 # No he entendido nada ¿me pones un ejemplo?
 Claro que sí.
+
 Partimos de la hoja de cálculo [AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Como verás, contiene 5 gráficos distintos cuyos datos de origen podrían proceder de fuentes diversas: formularios, información importada de otras hojas de cálculo, valores numéricos introducidos directamente por el usuario...
 
 Estos gráficos han sido insertados en la presentación [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y podrían alterarse como consecuencia de variaciones en sus datos de origen. En ese caso será necesario actualizarlos en la presentación utilizando las funciones del menú contextual de gráfico vinculado.
@@ -35,9 +36,14 @@ AutoSlides es capaz de publicar la presentación y generar una página web con e
 
 ![AutoSlides (demo) - Presentaciones de Google](https://user-images.githubusercontent.com/12829262/74864895-8f024080-5350-11ea-8a90-a9800b2bc2d5.gif)
 
-La presentación publicada, visible en la ventana del navegador (derecha), reflejará los cambios que eventualmente se vayan produciendo en la vista de edición (izquierda) sin que el usuario que la visualiza deba recargar la página. Podemos mostrar la versión publicada a pantalla completa en un monitor visible en un espacio público o simplemente incrustar presentación publicada por AutoSlides en una página web informativa.
+La presentación publicada, visible en la ventana del navegador (derecha), reflejará los cambios que eventualmente se vayan produciendo en la vista de edición (izquierda) sin que el usuario que la visualice deba recargar la página.
 
 ![AutoSlides demo](https://user-images.githubusercontent.com/12829262/74866819-c6beb780-5353-11ea-9591-918299d3ccb0.gif)
+
+Podríamos mostrar la versión publicada a pantalla completa en un **monitor visible en un espacio público** o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
+
+![Test incrustación AutoSlides](https://user-images.githubusercontent.com/12829262/74867638-50bb5000-5355-11ea-96c4-7e2a8ea60426.gif)
+
 
 # Instrucciones de uso
 

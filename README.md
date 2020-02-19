@@ -19,6 +19,6 @@ AutoSlide dispone de las siguientes características y funciones:
   + Eliminación del panel de botones habitual en las presentaciones incrustadas (sí / no).
   + Eliminación de las bandas laterales negras habituales en las presentaciones incrustadas (sí / no).
   + Eliminación del borde del marco de incrustación (sí / no).
-+ Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script `refrescarGraficosHdc()` para actualizar también estos gráficos a intervalos específicos.
++ Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script (`refrescarGraficosHdc`) para actualizar también estos gráficos a intervalos específicos.
 
 ![Diagrama AutoSlides](https://docs.google.com/drawings/d/e/2PACX-1vQmJbOnDrP2xuUAy6ffHRCBlZDgRKOh4ZEO2WFwbTal9Celksl7lL659P2P5AwAgdOStqMcJVpAncK9/pub?w=1059&h=346)

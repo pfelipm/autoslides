@@ -60,7 +60,7 @@ Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste di
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886543-bbca4e00-5378-11ea-9ba0-260ba7d0fe74.gif"></p>
 
-Aprecia la diferencia que existe entre la inserción convencional (abajo) :thumbsdown: y la de AutoSlides (arriba) :+1:.
+Aprecia la diferencia que existe entre la inserción convencional :thumbsdown: y la de AutoSlides :+1:.
 
 ![74869376-261ec680-5358-11ea-8f68-f9b842629044](https://user-images.githubusercontent.com/12829262/74886759-5165dd80-5379-11ea-8a62-5f3192c130a9.png)
 
@@ -73,7 +73,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 # Instrucciones de uso
 1. Obtén una copia de la **plantilla de AutoSlides** abriendo este enlace y a continuación haz clic en `Utilizar plantilla`.
 
-[AutoSlides]https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) 
+:point_right: [AutoSlides # plantilla](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) :point_left:
 
 2. Edita tu presentación del modo habitual.
 3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` :: `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.

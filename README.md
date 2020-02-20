@@ -73,4 +73,7 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 
 1. Finalmente, ejecuta nuevamente `🔄 AutoSlides` > `🌐 Obtener URL público` y obtén el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.  
-1. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔻 Detener publicación`.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888641-dd2e3880-537e-11ea-9923-e383b54ca195.png"></p>
+
+1. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` > `🔻 Detener publicación`.

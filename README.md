@@ -95,7 +95,7 @@ Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de d
 
 AutoSlides es un script GAS que vive dentro de una presentación de Google, facilitada como **plantilla**. El modo más fácil de usarlo es hacerse una copia de esta plantilla y trabajar sobre ella para construir una nueva presentación. Dado que el código de AutoSlides está compuesto por varios archivos, no resulta práctico incluir manualmente todos ellos en una presentación ya existente.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74914937-9f073800-53c3-11ea-8ab0-6b8f46206f45.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74946260-4fdbfa00-53f9-11ea-98b9-213226c7f2f8.png"></p>
 
 La mayor parte del código vive dentro del archivo `Código.gs`. En él se encuentran las **funciones** necesarias para:
 

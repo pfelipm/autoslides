@@ -109,7 +109,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 
 Hubiera preferido resolver esto de un modo más compacto usando las *funciones flecha*, que ya admite Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides para usar el antiguo motor de ejecución *Rhino* para no tener que renunciar a ciertas funcionalidades.
 
-´´´javascript
+```javascript
 function refrescarGraficosHdc() {   
   // Versión V8. No se utiliza para seguir ejecutando con Rhino por bug V8 y ScriptApp.GetService().getUrl()
   // https://groups.google.com/d/topic/google-apps-script-community/0snPFcUqt40/discussion
@@ -118,7 +118,7 @@ function refrescarGraficosHdc() {
     diapo.getSheetsCharts().map(function(grafico) {
       grafico.refresh();});});
 }
-´´´
+```
 
 - Desplegar el **panel lateral de configuración** de AutoSlides (`configurar`). Se utiliza `PropertiesService` para inicializar y guardar la configuración de incrustación y el estado de publicación de la presentación. La selección de ajustes se realiza mediante un formulario HTML (`panelLateral.html`) creado con la ayuda de [Materialize](https://materializecss.com/).
 

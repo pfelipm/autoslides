@@ -275,7 +275,7 @@ Dejando de lado las distintas funciones que forman parte del código de AutoSlid
 
 Intervienen aquí numerosos scriptlets de parametrización, que son instanciados, como hemos visto, en la función `doGet`:
 - `<?= aspecto ?>`: Aparece en el bloque `DIV` exterior. Se emplea como relleno inferior de la capa para conseguir una visualización adaptada al tamaño de la ventana (*responsive*) con independencia de la relación de aspecto de la presentación. Para que esto funcione es necesario que el `<iframe>` interior tenga un posicionamiento de tipo absoluto.
-- `<?= insetSuperior ?>` / `<?= insetLateral ?>` / `<?= insetInferior ?>`: Se utilizan para recortar las bandas laterales, la barra inferior y, en su caso, los bordes del marco incrustado empleando el atributo CSS `clip-path`.
+- `<?= insetSuperior ?>` / `<?= insetLateral ?>` / `<?= insetInferior ?>`: Se utilizan para recortar las bandas laterales, la barra inferior y, en su caso, los bordes del marco incrustado empleando la propiedad CSS `clip-path`.
 - `<?= url ?>`: El URL de la versión publicada de la presentación.
 - `<?= iniciar ?>` / `<?= repetir ?>`: Controlan si la presentación debe comenzar a reproducirse automáticamente al cargar y si se repite tras la proyección de la última diapositiva.
 - `<?= msAvanzar ?>`: Velocidad de avance de diapositiva, en milisegundos.

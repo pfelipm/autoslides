@@ -215,7 +215,7 @@ try {
 ...
 ```
 
->La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse, así que mejor hablaremos de ello en otra ocasión.
+>La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse de manera específica, así que mejor hablaremos de ello en otra ocasión.
 
 - Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
@@ -280,7 +280,7 @@ Intervienen aquí numerosos scriptlets de parametrización, que son instanciados
 - `<?= iniciar ?>`, `<?= repetir ?>`: Controlan si la presentación debe comenzar a reproducirse automáticamente al cargar y si se repite tras la proyección de la última diapositiva.
 - `<?= msAvanzar ?>`: Velocidad de avance de diapositiva, en milisegundos.
 
-Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario. Esto se consigue con este sencilla función JavaScript, que cambia su atributo `url` periódicamente de acuerdo con el parámetro `<?= msRecargar ?>` asociado a una función invocada mediante `setInterval`.
+Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario. Esto se consigue con este sencilla función JavaScript, que cambia su atributo `src` periódicamente de acuerdo con el parámetro `<?= msRecargar ?>` asociado a una función invocada mediante `setInterval`.
 
 ```javascript
   <script>
@@ -301,6 +301,27 @@ Esto resuelve la incrustación parametrizada, solo falta ahora que el marco inte
   </script>
 ```
 Para que la recarga del contenido del marco interior (con la presentación) sea suave se juega con su propiedad `opacity`, sobre la que se ha establecido previamente una transición de 1 segundo. Además, gracias a una [promesa JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise), se introduce un retardo de `<?= msFundido ?>` milisengudos antes de volver a hacer visible la presentación.
+
+Finalmente, todo este bloque que resuelve la incrustación y refresco de la presentación, está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar`:
+
+```html
+<body>
+  
+<!-- Mostrar presentación incrustada si publicación activada -->
+  
+<? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true') { ?>
+
+  <!-- Mostrar / refrescar presentación -->
+
+<? } else {?>
+
+  <h1>La presentación no está disponible</h1>
+
+<? } ?>
+</body>
+```
+
+Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script. Si se modifican los ajustes de AutoSlides será necesario, ahora sí, recargar manualmente la página servida por la webapp para que tengan efecto.
 
 Comentar: V8 y getURL
 Comentar: imágenes inline

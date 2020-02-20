@@ -172,7 +172,7 @@ function ajustesPorDefecto() {
 }
 ```
 
-- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API del cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (`actualizarAjustes`). A destacar que cuando el objeto `form` del DOM HTML devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. En este caso, una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento correspondiente.
+- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API del cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (`actualizarAjustes`). A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. En este caso, una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento correspondiente.
 
 ```javascript
 function actualizarAjustes(form) {
@@ -198,20 +198,22 @@ function actualizarAjustes(form) {
 - Localizar la versión más reciente de la presentación (`obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (`despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se mostrará un nuevo panel lateral con instrucciones para el usuario (archivo `instruccionesWebApp.html`). En caso de que se detecte que la webapp ya haya sido desplegada simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que tenerlo en cuenta para no dejarse nada.
 
 ```javascript
-  var slideId = SlidesApp.getActivePresentation().getId();
-  var respuesta;
-  var token;
-  var revisiones = [];
-  var hayMas = true;
- 
-  // Iterar hasta alcanzar la última revisión de la presentación
-  try {
-    while (hayMas == true) {
-      respuesta = Drive.Revisions.list(slideId, {maxResults: 1000, pageToken: token});
-      revisiones = revisiones.concat(respuesta.items);
-      token = revisiones.nextPageToken;
-      hayMas = (token == undefined) ? false : true;
-    }
+...
+var slideId = SlidesApp.getActivePresentation().getId();
+var respuesta;
+var token;
+var revisiones = [];
+var hayMas = true;
+
+// Iterar hasta alcanzar la última revisión de la presentación
+try {
+  while (hayMas == true) {
+    respuesta = Drive.Revisions.list(slideId, {maxResults: 1000, pageToken: token});
+    revisiones = revisiones.concat(respuesta.items);
+    token = revisiones.nextPageToken;
+    hayMas = (token == undefined) ? false : true;
+  }
+...
 ```
 
 >La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse, así que mejor hablaremos de ello en otra ocasión.

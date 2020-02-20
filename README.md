@@ -19,7 +19,7 @@ AutoSlide dispone de las siguientes características y funciones:
   + Eliminación del panel de botones habitual en las presentaciones incrustadas (sí / no).
   + Eliminación de las bandas laterales negras habituales en las presentaciones incrustadas (sí / no).
   + Eliminación del borde del marco de incrustación (sí / no).
-+ Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script (`refrescarGraficosHdc`) para actualizar también estos gráficos a intervalos específicos.
++ Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script (`refrescarGraficosHdc`) para actualizar también estos gráficos a intervalos específicos a partir de sus datos numéricos de origen.
 
 ![esquema](https://user-images.githubusercontent.com/12829262/74886127-9e48b480-5377-11ea-80ca-09f626e40f0d.png)
 
@@ -28,7 +28,7 @@ Claro que sí.
 
 Partimos de la **hoja de cálculo** [AutoSlides # origen (demo)](https://docs.google.com/spreadsheets/d/1MPYs0DleXOiLRjeKTLcopzh8XkvWp_jT2717SGRe2JU/template/preview). Como verás, contiene 5 gráficos distintos cuyos datos de origen podrían proceder de fuentes diversas: formularios, información importada de otras hojas de cálculo, valores numéricos introducidos directamente por el usuario...
 
-Estos gráficos han sido insertados en la **presentación** [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y podrían alterarse como consecuencia de variaciones en sus datos de origen. En ese caso es necesario, de manera habitual, actualizarlos en la presentación utilizando las funciones del menú contextual del gráfico vinculado.
+Estos gráficos han sido insertados en la **presentación** [AutoSlides (demo)](https://docs.google.com/presentation/d/15QCPrNd9VlX2WA23basUCu-LQNzfADavtUh--xeg_pU/template/preview) y quizas podrían experimentar cambios en el futuro como consecuencia de variaciones en los datos en los que se basan. Eso es habitual cuando se usan gráficos que reflejan la evolución de procesos dinámicos (por ejemplo, las respuestas a un formulario abierto). Sin AutoSlides, deberíamos actualizarlos en la presentación de manera manual por medio de las funciones del menú contextual de gráfico vinculado. Con AutoSlides... veremos más abajo qué se puede hacer.
 
 ![74864106-48601680-534f-11ea-8aa5-17bfecbb84cf](https://user-images.githubusercontent.com/12829262/74886171-bcaeb000-5377-11ea-9f2c-0d1fb02e1a3f.gif)
 
@@ -44,7 +44,7 @@ Podríamos mostrar la versión publicada a pantalla completa en un **monitor vis
 
 ![74867638-50bb5000-5355-11ea-96c4-7e2a8ea60426](https://user-images.githubusercontent.com/12829262/74886377-49f20480-5378-11ea-8b1b-e5d10dcaeffa.gif)
 
-Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegador sin dejar bandas negras. También puede, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
+Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegador sin dejar bandas negras. También es posible, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886543-bbca4e00-5378-11ea-9ba0-260ba7d0fe74.gif"></p>
 
@@ -52,11 +52,11 @@ Aprecia la diferencia que existe entre la inserción convencional (abajo) y la d
 
 ![74869376-261ec680-5358-11ea-8f68-f9b842629044](https://user-images.githubusercontent.com/12829262/74886759-5165dd80-5379-11ea-8a62-5f3192c130a9.png)
 
-Por último, si el usuario crea un activador GAS que se dispare por tiempo y ejecute a ciertos intervalos la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, lograremos que cualquier cambio en los gráficos vinculados de la presentación se propague a su versión publicada. Por ejemplo, aquí se realiza esta operación para conseguir su actualización con una frecuencia de 5 minutos.
+Por último, si el usuario crea un activador GAS temporal que ejecute a intervalos regulares la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, conseguiremos que los gráficos de hoja de cálculo vinculados se actualicen también *automágicamente*. Por ejemplo, en la imagen del ejemplo se establece una cadencia de actualización de 5 minutos.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886825-8114e580-5379-11ea-876f-1f691fb14d85.gif"></p>
 
-¿La cosa queda ya más clara? Pues veamos cómo puedes utilizar AutoSlides para publicar tus presentaciones, paso a paso.
+¿La cosa queda ya más clara? Pues veamos cómo puedes usar AutoSlides para mejorar la publicación de tus presentaciones, paso a paso.
 
 # Instrucciones de uso
 1. Obtén una copia de la **plantilla de AutoSlides** haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
@@ -64,7 +64,7 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74887855-73ad2a80-537c-11ea-8e90-c500de653000.png"></p>
 
-1. Si AutoSlides detecta que la presentación contiene gráficos de hoja de cálculo vinculados mostrará un mensaje y te facilitará instrucciones para indicarte cómo puedes configurar un actividor por tiempo que también los actualice.
+1. Si AutoSlides detecta que la presentación contiene gráficos de hoja de cálculo vinculados mostrará un mensaje y te facilitará instrucciones para indicarte cómo puedes configurar un activador por tiempo que también los actualice. Este paso es totalmente **opcional**, no tienes por qué utilizar gráficos de hojas de cálculo en tus presentaciones o, incluso si lo haces, configurar un activador para actualizarlos.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888030-1796d600-537d-11ea-90c1-975c4f1ccf44.png"></p>
 

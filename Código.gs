@@ -92,7 +92,10 @@ function configurar() {
     // Establecer ajustes por defecto
     
     PropertiesService.getDocumentProperties().setProperties(AJUSTES_P, true);
-    PropertiesService.getDocumentProperties().setProperty('publicado', ' false');
+    
+    // Inicialmente la publicación está desactivada
+    
+    PropertiesService.getDocumentProperties().setProperty('publicar', ' false');
 
   }
   
@@ -122,16 +125,19 @@ function configurar() {
 
 function ajustesPorDefecto() {
   
-  // Restablecer ajustes por defecto (false para preservar propiedad 'publicado' actual)
+  // Invocado desde panelLateral_js
+  // Restablecer ajustes por defecto (false para preservar propiedad 'publicar' actual)
   
   PropertiesService.getDocumentProperties().setProperties(AJUSTES_P, false);
   
+  // Devolver a panelLateral_js para que actualice formulario
   return AJUSTES_P;
   
 }
 
 function actualizarAjustes(form) {
- 
+
+  // Invocado desde panelLateral_js
   // Al devolver form desde cliente, si una casilla de verificación no está marcada,
   // su propiedad (name) en el objeto pasado a servidor no se devuelve (cuidado).
   
@@ -153,8 +159,9 @@ function obtenerRevisiones() {
   // Devuelve el ID de la última revisión de la presentación actual
   
   var slideId = SlidesApp.getActivePresentation().getId();
-  var revisiones = [];
+  var respuesta;
   var token;
+  var revisiones = [];
   var hayMas = true;
  
   // Iterar hasta alcanzar la última revisión de la presentación
@@ -162,14 +169,16 @@ function obtenerRevisiones() {
   try {
       
     while (hayMas == true) {
-      revisiones = Drive.Revisions.list(slideId, {maxResults: 1000, pageToken: token});
-      token = revisiones.nextPageToken;
-      hayMas = (revisiones.nextPageToken == undefined) ? false : true;
+      respuesta = Drive.Revisions.list(slideId, {maxResults: 1000, pageToken: token});
+      revisiones = revisiones.concat(respuesta.items);
+      token = respuesta.nextPageToken;
+      hayMas = (token == undefined) ? false : true;
     }
     
     // Publicar última revisión de la presentación
     
-    return revisiones.items[revisiones.items.length-1].id;
+    return revisiones[revisiones.length-1].id;
+    
   } catch(e) {
   
     SlidesApp.getUi().alert('🔄 AutoSlides', '❌ Error al obtener las revisiones de la presentación.\n\n' + e, SlidesApp.getUi().ButtonSet.OK); 
@@ -177,7 +186,6 @@ function obtenerRevisiones() {
   }
 }
   
-
 function publicar() {
      
   var slideId = SlidesApp.getActivePresentation().getId();

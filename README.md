@@ -121,9 +121,9 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 
 <!-- Incluir js usando force-printing scriptlets -->
 <?!= HtmlService.createHtmlOutputFromFile('panelLateral_js').getContent(); ?>
-``` 
+ 
+...
 
-```javascript
 <!-- Mostrar nº de hdc vinculadas en la presentación + instrucciones  -->
 <? if (contarGraficosHdc() > 0 ) { ?>
   <p>Se han detectado <b><?= numGraficos ?></b> gráficos de HdC vinculados.

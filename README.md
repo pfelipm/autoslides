@@ -6,7 +6,7 @@
 - [¿Qué puede hacer AutoSlides?](#qu%C3%A9-puede-hacer-autoslides)
 - [No he entendido gran cosa ¿me pones un ejemplo?](#no-he-entendido-gran-cosa-me-pones-un-ejemplo)
 - [Instrucciones de uso](#instrucciones-de-uso)
-- [Particularidades y mejoras](#particularidades-y-mejoras)
+- [Detalles técnicos](#particularidades-y-mejoras)
 - [Licencia](#licencia)
 
 # ¿Qué es AutoSlides?
@@ -89,7 +89,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 
 7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` :: `🔻 Detener publicación`.
 
-# Particularidades y mejoras
+# Detalles técnicos
 WIP
 
 # Licencia

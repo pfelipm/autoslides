@@ -61,10 +61,14 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 # Instrucciones de uso
 1. Obtén una copia de la **plantilla de AutoSlides** haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
 1. Edita tu presentación del modo habitual.
-1. Haz clic en `🔄 AutoSlides` > `🌐 Obtener URL público`.
-1. Cuanto estés listo para publicarla, haz clic en `🔄 AutoSlides` > `⚙️ Configurar` y establece los ajustes de publicación, que determinarán como se visualizará tu presentación.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74887855-73ad2a80-537c-11ea-8e90-c500de653000.png"></p>
 
+1. Si AutoSlides detecta que la presentación contiene gráficos de hoja de cálculo vinculados mostrará un mensaje y te facilitará instrucciones para indicarte cómo puedes configurar un actividor por tiempo que también los actualice.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888030-1796d600-537d-11ea-90c1-975c4f1ccf44.png"></p>
+
 ![Selección_999(219)](https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png)
-1. Sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que seguirlo una vez (por cada presentación en la que uses AutoSlides).
+1. A continuación, clic en `🔄 AutoSlides` > `🌐 Obtener URL público` y sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que completarlo una vez (por cada presentación en la que uses AutoSlides).
+1. Finalmente, ejecuta nuevamente `🔄 AutoSlides` > `🌐 Obtener URL público` y obtén el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.
+1. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔻 Detener publicación`.

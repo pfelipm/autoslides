@@ -1,4 +1,13 @@
 ![74842491-cb22aa80-532a-11ea-8116-150ef294bd59](https://user-images.githubusercontent.com/12829262/74886021-4d38c080-5377-11ea-8c70-1e03bf4c2231.png)
+
+- [¿Qué es AutoSlides?](#qu%C3%A9-es-autoslides)
+- [¿Por qué AutoSlides?](#por-qu%C3%A9-autoslides)
+- [¿Qué puede hacer AutoSlides?](#qu%C3%A9-puede-hacer-autoslides)
+- [No he entendido gran cosa ¿me pones un ejemplo?](#no-he-entendido-gran-cosa-me-pones-un-ejemplo)
+- [Instrucciones de uso](#instrucciones-de-uso)
+- [Particularidades y mejoras](#particularidades-y-mejoras)
+- [Licencia](#licencia)
+
 # ¿Qué es AutoSlides?
 AutoSlides es una **plantilla de presentaciones** de Google potenciada con código Apps Script diseñada para ser utilizada en **puntos de información desatendidos**, aunque también puede usarse como elemento informativo, enlazado o incrustado, en cualquier sitio web. 
 

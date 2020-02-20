@@ -21,19 +21,12 @@
   <script>
   
     setInterval(function(){
+      
       document.getElementById("marco2").style.opacity = 0;
       
       sleep(1000).then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";});
       sleep(<?= msFundido ?>).then(() => {document.getElementById("marco2").style.opacity = 1;});
-      
-      // Las llamadas anteriores se ejecutan a la vez, msfundido >= *500ms* (heurística) + 1000ms, alternativamente:
-      
-      /*sleep(1000)
-        .then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";})
-        .then(() => {sleep(<?= msFundido ?>)
-          .then(() => {document.getElementById("marco2").style.opacity = 1;})});*/
-      
-      
+           
     }, <?= msRecargar ?>);
     
     function sleep(ms) {

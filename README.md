@@ -126,7 +126,7 @@ function refrescarGraficosHdc() {
 
   Los valores vigentes de cada ajuste son inyectados nuevamente en los elementos HTML del formulario por medio de scriptlets explícitos. Las secciones CSS (`panelLateral_css.html`) y JavaScript (`panelLateral_js.html`) se insertan en el código HTML también mediante scriptlets explícitos, pero esta vez de tipo forzado (*force-printing scriptlets*). También se usan scriptlets no explícitos (*standard scriptlets*) para mostrar las instrucciones de creación de un activador por tiempo si se detectan gráficos vinculados:
   
-```javascript
+```html
 <!-- Incluir valores por defecto de controles del formulario usando printing scriptlets -->
 <div class="row">
   <div class="input-field col s12">
@@ -134,19 +134,19 @@ function refrescarGraficosHdc() {
   <input class="validate" type="number" name="sAvanzar" value="<?= sAvanzar ?>" min="1" step="1" id="sAvanzar">
   </div>
  </div>
+ ```
 
-...
-
+```html
 <!-- Incluir css usando force-printing scriptlets -->
 <?!= HtmlService.createHtmlOutputFromFile('panelLateral_css').getContent(); ?>
+ ```
 
-...
-
+```html
 <!-- Incluir js usando force-printing scriptlets -->
 <?!= HtmlService.createHtmlOutputFromFile('panelLateral_js').getContent(); ?>
- 
-...
+```
 
+```html
 <!-- Mostrar nº de hdc vinculadas en la presentación + instrucciones  -->
 <? if (contarGraficosHdc() > 0 ) { ?>
   <p>Se han detectado <b><?= numGraficos ?></b> gráficos de HdC vinculados.
@@ -172,7 +172,7 @@ function ajustesPorDefecto() {
 }
 ```
 
-- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API del cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (`actualizarAjustes`). A destacar que cuando el objeto `form` del DOM HTML devuelto como parámetros contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. En este caso, una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento correspondiente.
+- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API del cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (`actualizarAjustes`). A destacar que cuando el objeto `form` del DOM HTML devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. En este caso, una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento correspondiente.
 
 ```javascript
 function actualizarAjustes(form) {
@@ -195,7 +195,7 @@ function actualizarAjustes(form) {
 
 ```
 
-- Localizar la versión más reciente de la presentación (`obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (`despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se mostrará un nuevo panel lateral con instrucciones para el usuario (archivo `instruccionesWebApp.html`). En caso de que se detecte que la webapp ya haya sido desplegada simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques try{} .. catch{} para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que tenerlo en cuenta para no dejarse nada.
+- Localizar la versión más reciente de la presentación (`obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (`despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se mostrará un nuevo panel lateral con instrucciones para el usuario (archivo `instruccionesWebApp.html`). En caso de que se detecte que la webapp ya haya sido desplegada simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que tenerlo en cuenta para no dejarse nada.
 
 ```javascript
   var slideId = SlidesApp.getActivePresentation().getId();

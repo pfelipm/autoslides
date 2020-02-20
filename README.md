@@ -69,7 +69,6 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888030-1796d600-537d-11ea-90c1-975c4f1ccf44.png"></p>
 
 1. A continuación, clic en `🔄 AutoSlides` > `🌐 Obtener URL público` y sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que completarlo una vez (por cada presentación en la que uses AutoSlides).
-
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 
 1. Finalmente, ejecuta nuevamente `🔄 AutoSlides` > `🌐 Obtener URL público` y obtén el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.  

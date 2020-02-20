@@ -93,4 +93,4 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 WIP
 
 # Licencia
-© 2020 Pablo Felip Monferrer (@pfelipm). Se distribuye bajo licencia GNU GPL v3.
+© 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia GNU GPL v3.

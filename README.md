@@ -325,13 +325,15 @@ Finalmente, todo este bloque que resuelve la incrustación y refresco de la pres
 
 Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script, justo antes de ser enviada al navegador del usuario. Si se modifican los ajustes de AutoSlides será necesario, ahora sí, recargar manualmente la página servida porla webapp para que tengan efecto.
 
-No quiero acabar sin comentar 3 detalles adicionales:
-- Las webapps GAS admiten en estos momentos únicamente **30 accesos concurrentes** (bueno, [realmente 29](https://stackoverflow.com/a/50033976). ¿Quiere esto decir que una presentación publicada con AutoSlides solo puede aparecer en 29 navegadores a un instante dado?. En absoluto. Esta limitación de acceso únicamente afecta al momento en que la webapp recibe una petición y construye y devuelve la página web. Una vez el código HTML + JavaScript se está ejecutando en el navegador del usuario, deja de contabilizar como un acceso. En cualquier caso, el escenario de uso principal de AutoSlides es la creación de paneles informativos desatentidos en espacios 
+No quiero acabar sin comentar 2 detalles adicionales:
+- Es la primera vez que incluyo imágenes en un desarrollo GAS como elementos informativos o meramente decorativos. Resulta realmente práctico poder embeber estas imágenes en código HTML del proyecto, Para ello hay que asignarle al atributo `src` del tag `<IMG>` una cadena con el prefijo `data:image/{tipo};base64` seguida del contenido binario de la imagen codificado en Base64. Para ello puedes utilizar cualquier conversor en línea, [este](https://www.base64-image.de/) por ejemplo.
 
-Comentar: V8 y getURL
-Comentar: imágenes inline
+```html
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa...">
+```
 
-
+especialmente construida que codifica en Base64 la 
+- Las webapps GAS admiten en estos momentos únicamente **30 accesos concurrentes** (bueno, [realmente 29](https://stackoverflow.com/a/50033976)). ¿Quiere esto decir que una presentación publicada con AutoSlides solo puede aparecer en 29 navegadores en un instante dado?. En absoluto. Esta limitación de acceso únicamente afecta al momento en que la webapp recibe una petición y construye y devuelve la página web. Una vez el código HTML + JavaScript se está ejecutando en el navegador del usuario, deja de contabilizar como un acceso dado que a partir de ahí es código absolutamente estático que no conecta en ningún momento con las funciones GAS en el servidor. En cualquier caso, el escenario de uso principal de AutoSlides es la creación de paneles informativos desatentidos en espacios reales, por lo que entiendo que esta limitación es aún menos relevante.
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia GNU GPL v3.

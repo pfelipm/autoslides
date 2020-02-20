@@ -90,5 +90,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` :: `🔻 Detener publicación`.
 
 # Particularidades y mejoras
+WIP
 
 # Licencia
+© 2020 Pablo Felip Monferrer (@pfelipm). Se distribuye bajo licencia GNU GPL v3.

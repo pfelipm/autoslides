@@ -99,11 +99,11 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 - Construir el **menú** de la aplicación (`onOpen`).
 - Mostrar **información** sobre AutoScript (`acercaDe`, que muestra el contenido del archivo HTML  `acercaDe.html`, inyectando como parámetro mediante un scriptlet explícito (*printing scriptlet*) la cadena que identifica la versión del script (`VERSION`). Esto se consigue gracias al servicio de [plantillas HTML](https://developers.google.com/apps-script/guides/html/templates).
 
-´´´javascript
+```javascript
  <p><?= version ?>.</p>
  <p>Más información en <a target="_blank">(no disponible)</a>.</p>
  <p>© Pablo Felip (<a target="_blank" href="https://twitter.com/pfelipm">@pfelipm</a>) con licencia GNU GPL v3.</p>
-´´´
+```
 
 - Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (`contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones y vincular estos últimos.
 
@@ -114,6 +114,7 @@ function refrescarGraficosHdc() {
   // Versión V8. No se utiliza para seguir ejecutando con Rhino por bug V8 y ScriptApp.GetService().getUrl()
   // https://groups.google.com/d/topic/google-apps-script-community/0snPFcUqt40/discussion
   // SlidesApp.getActivePresentation().getSlides().map(diapo => {diapo.getSheetsCharts().map(grafico => {grafico.refresh();});});
+ 
   SlidesApp.getActivePresentation().getSlides().map(function(diapo) {
     diapo.getSheetsCharts().map(function(grafico) {
       grafico.refresh();});});

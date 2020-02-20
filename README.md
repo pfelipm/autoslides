@@ -15,7 +15,7 @@ AutoSlides es una **plantilla de presentaciones** de Google potenciada con códi
 ![D9Az53UW4AEAjst](https://user-images.githubusercontent.com/12829262/74961946-42316f00-540f-11ea-9bc3-7047ff6ed239.png)
 
 # ¿Por qué AutoSlides?
-Las presentaciones de Google disponen de una función de publicación que facilita su difusión. De este modo pueden enlazarse o incrustarse en medios web con facilidad. No obstante, si se modifican las disapositivas de la presentación es necesario recargar la página que contiene sus versiones publicadas en el navegador para que estos cambios se manifiesten. AutoSlides es capaz de generar un pase de diapositivas auto hospedado, visible utilizando un navegador, que se **refresca automáticamente** a intervalos prefijados sin necesidad de recargar la página web de manera manual en el navegador.
+Las presentaciones de Google disponen de una función de publicación que facilita su difusión. De este modo pueden enlazarse o incrustarse en medios web con facilidad. No obstante, si se modifican las diapositivas de la presentación es necesario recargar la página que contiene sus versiones publicadas en el navegador para que estos cambios se manifiesten. AutoSlides es capaz de generar un pase de diapositivas auto hospedado, visible utilizando un navegador, que se **refresca automáticamente** a intervalos prefijados sin necesidad de recargar la página web de manera manual en el navegador.
 
 # ¿Qué puede hacer AutoSlides?
 AutoSlide dispone de las siguientes características y funciones:

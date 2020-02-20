@@ -95,6 +95,8 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 # Detalles técnicos
 Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de detalles esto te lo puedes saltar sin remordimientos.
 
+![Diagrama de bloques AutoSlides](https://docs.google.com/drawings/d/e/2PACX-1vQVQyfYdmlQ6ZzOJu149dLcU4YcnoLlpDrzZCQg6nBsIAMTQXuSjrzutHNGV3YwobWN4mWzuUb8iRol/pub?w=1000&h=1000)
+
 AutoSlides es un script GAS que vive dentro de una presentación de Google, facilitada como **plantilla**. El modo más fácil de usarlo es hacerse una copia de esta plantilla y trabajar sobre ella para construir una nueva presentación. Dado que el código de AutoSlides está compuesto por varios archivos, no resulta práctico incluir manualmente todos ellos en una presentación ya existente.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74946260-4fdbfa00-53f9-11ea-98b9-213226c7f2f8.png"></p>

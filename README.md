@@ -331,8 +331,8 @@ No quiero acabar sin comentar 2 detalles adicionales:
 ```html
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa...">
 ```
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74963376-e87e7400-5411-11ea-9d9c-1c11ac06eed4.png")</p>
 
-especialmente construida que codifica en Base64 la 
 - Las webapps GAS admiten en estos momentos únicamente **30 accesos concurrentes** (bueno, [realmente 29](https://stackoverflow.com/a/50033976)). ¿Quiere esto decir que una presentación publicada con AutoSlides solo puede aparecer en 29 navegadores en un instante dado?. En absoluto. Esta limitación de acceso únicamente afecta al momento en que la webapp recibe una petición y construye y devuelve la página web. Una vez el código HTML + JavaScript se está ejecutando en el navegador del usuario, deja de contabilizar como un acceso dado que a partir de ahí es código absolutamente estático que no conecta en ningún momento con las funciones GAS en el servidor. En cualquier caso, el escenario de uso principal de AutoSlides es la creación de paneles informativos desatentidos en espacios reales, por lo que entiendo que esta limitación es aún menos relevante.
 
 # Licencia

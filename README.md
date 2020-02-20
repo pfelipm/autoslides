@@ -61,7 +61,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 # Instrucciones de uso
 1. Obtén una copia de la **plantilla de AutoSlides** haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
 1. Edita tu presentación del modo habitual.
-1. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` :: `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
+1.Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` :: `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74887855-73ad2a80-537c-11ea-8e90-c500de653000.png"></p>
 

@@ -90,8 +90,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` :: `🔻 Detener publicación`.
 
 # Detalles técnicos
-
-Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de detalle esto te lo puedes saltar sin remordimientos.
+Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de detalles esto te lo puedes saltar sin remordimientos.
 
 AutoSlides es un script GAS que vive dentro de una presentación de Google, facilitada como **plantilla**. El modo más fácil de usarlo es hacerse una copia de esta plantilla y trabajar sobre ella para construir una nueva presentación. Dado que el código de AutoSlides está compuesto por varios archivos, no resulta práctico incluir manualmente todos ellos en una presentación ya existente.
 
@@ -107,7 +106,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 <p>Más información en su <a target="_blank" src="https://github.com/pfelipm/autoslides">Repositorio GitHub</a>.</p>
 ```
 
-- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (`contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones y vincular estos últimos. Hubiera preferido resolver esto de un modo más compacto usando las *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino* para no tener que renunciar a ciertas funcionalidades.
+- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (`contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones y vincular estos últimos. Hubiera preferido resolver esto de un modo más compacto usando *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino*  para poder obtener la URL pública de la webapp publicada.
 
 ```javascript
 function refrescarGraficosHdc() { 
@@ -218,7 +217,7 @@ try {
 
 >La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse, así que mejor hablaremos de ello en otra ocasión.
 
-- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamemte, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
+- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
 ```javascript
 function doGet(e) {
@@ -248,9 +247,65 @@ function doGet(e) {
   return formularioWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 ```
+Dejando de lado las distintas funciones que forman parte del código de AutoSlides, veamos ahora qué hay en el interior de `slidesEmbed.html`, el archivo HTML donde realmente se realiza la incrustación de la presentación. Es corto pero tiene algún que otro detalle interesante. Vamos primero el código de incrustación:
 
-- **Mostrar la presentación incrustada**. Esto es cosa del código HTML en el archivo 
+```html
+ <div id="marco1"
+      style="display: block;
+             position: relative;
+             padding-bottom: <?= aspecto ?>%;
+             height: 0;
+             overflow: hidden;
+             border: none;">
+                         
+   <iframe id="marco2"
+           style="transition: opacity 1s;
+                  position:absolute;
+                  width: 100%; height: 100%;
+                  clip-path: inset(<?= insetSuperior ?>px <?= insetLateral ?>px <?= insetInferior ?>px <?= insetLateral ?>px)";
+           src="<?= url ?>
+                ?start=<?= iniciar ?>
+                &loop=<?= repetir ?>
+                &delayms=<?= msAvanzar ?>"
+           frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"> 
+   </iframe>
+ 
+</div>
+```
 
+Intervienen aquí numerosos scriptlets de parametrización, que son instanciados, como hemos visto, en la función `doGet`:
+- `<?= aspecto ?>`: Aparece en el bloque `DIV` exterior. Se emplea como relleno inferior de la capa para conseguir una visualización adaptada al tamaño de la ventana (*responsive*) con independencia de la relación de aspecto de la presentación. Para que esto funcione es necesario que el `<iframe>` interior tenga un posicionamiento de tipo absoluto.
+- `<?= insetSuperior ?>` / `<?= insetLateral ?>` / `<?= insetInferior ?>`: Se utilizan para recortar las bandas laterales, la barra inferior y, en su caso, los bordes del marco incrustado empleando el atributo CSS `clip-path`.
+- `<?= url ?>`: El URL de la versión publicada de la presentación.
+- `<?= iniciar ?>` / `<?= repetir ?>`: Controlan si la presentación debe comenzar a reproducirse automáticamente al cargar y si se repite tras la proyección de la última diapositiva.
+- `<?= msAvanzar ?>`: Velocidad de avance de diapositiva, en milisegundos.
+
+Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario:
+
+El URL de incrustación admite los mismos parámetros que el devuelto por la función de publicación nativa de las hojas de cálculo, aunque como ya hemos visto no es idéntico al obtenido de ese modo. Se encierra usando los tags HTML `<iframe>..</iframe>`, como era de espererar, y se parametrizan las opciones de reproducción. Esto se consigue con este sencilla función JavaScript, que cambia su atributo `url` periódicamente:
+
+```javascript
+  <script>
+  
+    setInterval(function(){
+      
+      document.getElementById("marco2").style.opacity = 0;
+      
+      sleep(1000).then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";});
+      sleep(<?= msFundido ?>).then(() => {document.getElementById("marco2").style.opacity = 1;});
+           
+    }, <?= msRecargar ?>);
+    
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+  </script>
+```
+Para que la recarga del contenido del marco2 (la presentación) sea suave se juega con su propiedad `opacity`, sobre la que se ha establecido previamente una transición de 1 segundo. Además, gracias a una [promesa JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise), se introduce un retardo de `<?= msFundido ?>` milisengudos antes de volver a hacer visible la presentación.
+
+Comentar: V8 y getURL
+Comentar: imágenes inline
 
 
 

@@ -308,19 +308,21 @@ Para que la recarga del contenido del marco interior (con la presentación) sea 
 Finalmente, todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar`:
 
 ```html
-<body>
+<body> 
   
-<!-- Mostrar presentación incrustada si publicación activada -->
+  <!-- Mostrar presentación incrustada si publicación activada -->
+
+  <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true') { ?>
+
+    <!-- Aquí va la parte que muestra / refresca la presentación -->
+    ...
+
+  <? } else {?>
+
+    <h1>La presentación no está disponible</h1>
+
+  <? } ?>
   
-<? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true') { ?>
-
-  <!-- Mostrar / refrescar presentación -->
-
-<? } else {?>
-
-  <h1>La presentación no está disponible</h1>
-
-<? } ?>
 </body>
 ```
 

@@ -96,10 +96,31 @@ AutoSlides es un script GAS que vive dentro de una presentación de Google, faci
 
 La mayor parte del código vive dentro del archivo `Código.gs`. En él se encuentran las **funciones** necesarias para:
 
-- Construir el menú de la aplicación (`onOpen`).
-- Mostrar información sobre AutoScript (`acercaDe`, que muestra el contenido del archivo HTML  `acercaDe.html`, inyectando como parámetro mediante un scriptlet explícito (*printing scriptlet*) la cadena que identifica la versión del script (`VERSION`). Esto se consigue gracias al servicio de [plantillas HTML](https://developers.google.com/apps-script/guides/html/templates).
-- Contabilizar y actualizar los gráficos vinculados de hoja de cálculo (`contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones y vincular estos últimos.
-- Desplegar el panel lateral de configuración de AutoSlides (`configurar`). Se utiliza `PropertiesService` para inicializar y guardar la configuración de incrustación y el estado de publicación de la presentación. La selección de ajustes se realiza mediante un formulario HTML (`panelLateral.html`) creado con la ayuda de [Materialize](https://materializecss.com/).
+- Construir el **menú** de la aplicación (`onOpen`).
+- Mostrar **información** sobre AutoScript (`acercaDe`, que muestra el contenido del archivo HTML  `acercaDe.html`, inyectando como parámetro mediante un scriptlet explícito (*printing scriptlet*) la cadena que identifica la versión del script (`VERSION`). Esto se consigue gracias al servicio de [plantillas HTML](https://developers.google.com/apps-script/guides/html/templates).
+
+´´´javascript
+ <p><?= version ?>.</p>
+ <p>Más información en <a target="_blank">(no disponible)</a>.</p>
+ <p>© Pablo Felip (<a target="_blank" href="https://twitter.com/pfelipm">@pfelipm</a>) con licencia GNU GPL v3.</p>
+´´´
+
+- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (`contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones y vincular estos últimos.
+
+Hubiera preferido resolver esto de un modo más compacto usando las *funciones flecha*, que ya admite Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides para usar el antiguo motor de ejecución *Rhino* para no tener que renunciar a ciertas funcionalidades.
+
+´´´javascript
+function refrescarGraficosHdc() {   
+  // Versión V8. No se utiliza para seguir ejecutando con Rhino por bug V8 y ScriptApp.GetService().getUrl()
+  // https://groups.google.com/d/topic/google-apps-script-community/0snPFcUqt40/discussion
+  // SlidesApp.getActivePresentation().getSlides().map(diapo => {diapo.getSheetsCharts().map(grafico => {grafico.refresh();});});
+  SlidesApp.getActivePresentation().getSlides().map(function(diapo) {
+    diapo.getSheetsCharts().map(function(grafico) {
+      grafico.refresh();});});
+}
+´´´
+
+- Desplegar el **panel lateral de configuración** de AutoSlides (`configurar`). Se utiliza `PropertiesService` para inicializar y guardar la configuración de incrustación y el estado de publicación de la presentación. La selección de ajustes se realiza mediante un formulario HTML (`panelLateral.html`) creado con la ayuda de [Materialize](https://materializecss.com/).
 
   Los valores vigentes de cada ajuste son nuevamente inyectados en los elementos del formulario por medio de scriptlets explícitos. Las secciones CSS (`panelLateral_css.html`) y JavaScript (`panelLateral_js.html`) se insertan en el código HTML también mediante scriptlets explícitos, pero esta vez de tipo forzado (*force-printing scriptlets*). También se usan scriptlets no explícitos (*standard scriptlets*) para mostrar las instrucciones de creación de un activador por tiempo si se detectan gráficos vinculados:
   
@@ -135,24 +156,21 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 <?}?>
 ```
 
-- Restablecer los ajustes por defecto cuando se utiliza el botón correspondiente del panel lateral de configuración (`ajustesPorDefecto`). No se modifica en este caso el valor de la propiedad `publicar`.
-- Recibir los ajustes establecidos por el usuario desde el panel lateral de configuración vía la llamada JavaScript `google.script.run` y actualizar las propiedades del documento (`actualizarAjustes`).
-- Localizar la versión más reciente de la presentación (`obtenerRevisiones`) para publicarla (`publicar`) o dejar de publicarla (`despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se mostrará un nuevo panel lateral con instrucciones para el usuario. En caso de que se detecte que la webapp ya haya sido desplegada simplemente se mostrará su URL público. Todo ello encerradito en bloques try{} .. catch{} para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script.
+- **Restablecer los ajustes** por defecto cuando se utiliza el botón correspondiente del panel lateral de configuración (`ajustesPorDefecto`). No se modifica en este caso el valor de la propiedad `publicar`.
+- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada JavaScript `google.script.run` y actualizar las propiedades del documento (`actualizarAjustes`).
+- Localizar la versión más reciente de la presentación (`obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (`despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se mostrará un nuevo panel lateral con instrucciones para el usuario (archivo `instruccionesWebApp.html`). En caso de que se detecte que la webapp ya haya sido desplegada simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques try{} .. catch{} para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script.
 
 >La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse, así que mejor hablaremos de ello en otra ocasión.
 
-- Generar y devolver al navegador del usuario que accede a la presentación publicada la página web en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo ' /embed'. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamemte, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para los usuarios a los que no se les ha concedido permisos de acceso explícitos sobre ella (los que acceden de manera pública). La página web genererada se devuelve `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
+- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamemte, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
 ```javascript
 function doGet(e) {
-
-  // Generar formulario web
-
+  // Generar formulario web 
   var urlPres = 'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
   var formularioWeb = HtmlService.createTemplateFromFile('slidesEmbed');
   
   // Rellenar elementos de plantilla
-  
   var ajustes = PropertiesService.getDocumentProperties().getProperties();
   var aspecto = 100 * SlidesApp.getActivePresentation().getPageHeight() / SlidesApp.getActivePresentation().getPageWidth();
   var offsetPx = ajustes.eliminarBordes == 'on' ? INSET_BORDES : 0;
@@ -167,14 +185,14 @@ function doGet(e) {
   formularioWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
   formularioWeb.insetSuperior = offsetPx.toString();
 
-  // Para "truco" CSS que hace el iframe responsive
-  
+  // Para "truco" CSS que hace el iframe responsive 
   formularioWeb.aspecto = aspecto.toString();
   
   return formularioWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-
 }
 ```
+
+- **Mostrar la presentación incrustada** .Esto es cosa del código HTML en el archivo 
 
 
 

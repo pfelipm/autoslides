@@ -324,7 +324,7 @@ Finalmente, todo este bloque que resuelve la incrustación y refresco de la pres
 </body>
 ```
 
-Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script, justo antes de ser enviada al navegador del usuario. Si se modifican los ajustes de AutoSlides será necesario, ahora sí, recargar manualmente la página servida porla webapp para que tengan efecto.
+Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script, justo antes de ser enviada al navegador del usuario. Si se modifican los ajustes de AutoSlides será necesario, ahora sí, recargar manualmente la página servida por la webapp para que tengan efecto.
 
 No quiero acabar sin comentar 2 detalles adicionales:
 - Es la primera vez que incluyo imágenes en un desarrollo GAS como elementos informativos o meramente decorativos. Resulta realmente práctico poder embeber estas imágenes en código HTML del proyecto, Para ello hay que asignarle al atributo `src` del tag `<IMG>` una cadena con el prefijo `data:image/{tipo};base64` seguida del contenido binario de la imagen codificado en Base64. Para ello puedes utilizar cualquier conversor en línea, [este](https://www.base64-image.de/) por ejemplo.

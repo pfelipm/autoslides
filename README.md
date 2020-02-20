@@ -127,11 +127,11 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 <!-- Mostrar nº de hdc vinculadas en la presentación + instrucciones  -->
 <? if (contarGraficosHdc() > 0 ) { ?>
   <p>Se han detectado <b><?= numGraficos ?></b> gráficos de HdC vinculados.
-    Configura un activador temporal si quieres que cuando cambien se actualice 
-    la presentación.</p>
-    <ul class="collapsible">
-    ...
-    </ul>
+  Configura un activador temporal si quieres que cuando cambien se actualice 
+  la presentación.</p>
+  <ul class="collapsible">
+  ...
+  </ul>
 <?}?>
 ```
 
@@ -142,6 +142,42 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 >La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse, así que mejor hablaremos de ello en otra ocasión.
 
 - Generar y devolver al navegador del usuario que accede a la presentación publicada la página web en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo ' /embed'. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamemte, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para los usuarios a los que no se les ha concedido permisos de acceso explícitos sobre ella (los que acceden de manera pública). La página web genererada se devuelve `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
+
+```
+function doGet(e) {
+
+  // Generar formulario web
+
+  var urlPres = 'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
+  var formularioWeb = HtmlService.createTemplateFromFile('slidesEmbed');
+  
+  // Rellenar elementos de plantilla
+  
+  var ajustes = PropertiesService.getDocumentProperties().getProperties();
+  var aspecto = 100 * SlidesApp.getActivePresentation().getPageHeight() / SlidesApp.getActivePresentation().getPageWidth();
+  var offsetPx = ajustes.eliminarBordes == 'on' ? INSET_BORDES : 0;
+  
+  formularioWeb.url =  'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
+  formularioWeb.iniciar = ajustes.iniciar == 'on' ? 'true' : 'false';
+  formularioWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';
+  formularioWeb.msAvanzar = (+ajustes.sAvanzar * 1000).toString();
+  formularioWeb.msFundido = ajustes.msFundido;
+  formularioWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
+  formularioWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
+  formularioWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
+  formularioWeb.insetSuperior = offsetPx.toString();
+
+  // Para "truco" CSS que hace el iframe responsive
+  
+  formularioWeb.aspecto = aspecto.toString();
+  
+  return formularioWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+
+}
+```
+
+
+
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia GNU GPL v3.

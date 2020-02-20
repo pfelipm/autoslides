@@ -71,7 +71,10 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 ¿La cosa queda ya más clara? Pues veamos cómo puedes usar AutoSlides para mejorar la publicación de tus presentaciones, paso a paso.
 
 # Instrucciones de uso
-1. Obtén una copia de la **plantilla de AutoSlides** haciendo clic [aquí](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview) y a continuación en `Utilizar plantilla`.
+1. Obtén una copia de la **plantilla de AutoSlides** abriendo este enlace y a continuación haz clic en `Utilizar plantilla`.
+
+<p align="center">:point_right:[AutoSlides # plantilla](https://docs.google.com/presentation/d/1xHNYGCL0t5uPPcRV7a9MUnNfy9Pysn6HnNfmoMQw104/template/preview):point_left:</p>
+
 2. Edita tu presentación del modo habitual.
 3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` :: `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
 

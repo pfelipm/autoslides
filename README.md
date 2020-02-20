@@ -107,8 +107,8 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 <!-- Incluir valores por defecto de controles del formulario usando printing scriptlets -->
 <div class="row">
   <div class="input-field col s12">
-    <label for="numFil">Avance automático cada (s)</label>
-    <input class="validate" type="number" name="sAvanzar" value="<?= sAvanzar ?>" min="1" step="1" id="sAvanzar">
+  <label for="numFil">Avance automático cada (s)</label>
+  <input class="validate" type="number" name="sAvanzar" value="<?= sAvanzar ?>" min="1" step="1" id="sAvanzar">
   </div>
  </div>
 

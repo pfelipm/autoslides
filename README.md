@@ -6,7 +6,7 @@
 - [¿Qué puede hacer AutoSlides?](#qu%C3%A9-puede-hacer-autoslides)
 - [No he entendido gran cosa ¿me pones un ejemplo?](#no-he-entendido-gran-cosa-me-pones-un-ejemplo)
 - [Instrucciones de uso](#instrucciones-de-uso)
-- [Detalles técnicos](#particularidades-y-mejoras)
+- [Detalles técnicos](#detalles-t%C3%A9cnicos)
 - [Licencia](#licencia)
 
 # ¿Qué es AutoSlides?
@@ -90,7 +90,18 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` :: `🔻 Detener publicación`.
 
 # Detalles técnicos
-WIP
+AutoSlides es un script GAS que vive dentro de una presentación de Google, facilitada como **plantilla**. El modo más fácil de usarlo es hacerse una copia de esta plantilla y trabajar sobre ella para construir una nueva presentación. Dado que el código de AutoSlides está compuesto por varios archivos, no resulta práctico incluir manualmente todos ellos en una presentación ya existente.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74914937-9f073800-53c3-11ea-8ab0-6b8f46206f45.png"></p>
+
+La mayor parte del código vive dentro del archivo `Código.gs`. En él se encuentran las **funciones** necesarias para:
+
+- Construir el menú de la aplicación (`onOpen`).
+- Mostrar información sobre AutoScript (`acercaDe`, que muestra el contenido de `acercaDe.html`, inyectando como parámetro mediante un scriptlet explícito (*printing scriptlet*) la cadena que identifica la versión del script (`VERSION`).
+- Contabilizar y actualizar los gráficos vinculados de hoja de cálculo (`contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, es generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones.
+- Desplegar el panel de configuración de AutoSlides (`configurar`). Se utiliza `PropertiesService` para guardar la configuración de incrustación el estado de publicación de la presentación.
+
+
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia GNU GPL v3.

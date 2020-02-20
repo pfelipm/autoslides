@@ -143,7 +143,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 
 - Generar y devolver al navegador del usuario que accede a la presentación publicada la página web en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (`doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo ' /embed'. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamemte, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para los usuarios a los que no se les ha concedido permisos de acceso explícitos sobre ella (los que acceden de manera pública). La página web genererada se devuelve `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
-```
+```javascript
 function doGet(e) {
 
   // Generar formulario web

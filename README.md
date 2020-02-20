@@ -280,9 +280,7 @@ Intervienen aquí numerosos scriptlets de parametrización, que son instanciados
 - `<?= iniciar ?>`, `<?= repetir ?>`: Controlan si la presentación debe comenzar a reproducirse automáticamente al cargar y si se repite tras la proyección de la última diapositiva.
 - `<?= msAvanzar ?>`: Velocidad de avance de diapositiva, en milisegundos.
 
-Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario:
-
-El URL de incrustación admite los mismos parámetros que el devuelto por la función de publicación nativa de las hojas de cálculo, aunque como ya hemos visto no es idéntico al obtenido de ese modo. Se encierra usando los tags HTML `<iframe>..</iframe>`, como era de espererar, y se parametrizan las opciones de reproducción. Esto se consigue con este sencilla función JavaScript, que cambia su atributo `url` periódicamente:
+Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario. Esto se consigue con este sencilla función JavaScript, que cambia su atributo `url` periódicamente de acuerdo con el parámetro `<?= msRecargar ?>` asociado a una función invocada mediante `setInterval`.
 
 ```javascript
   <script>

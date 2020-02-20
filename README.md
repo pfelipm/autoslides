@@ -63,5 +63,8 @@ Por último, si el usuario crea un activador GAS que se dispare por tiempo y eje
 1. Edita tu presentación del modo habitual.
 1. Haz clic en `🔄 AutoSlides` > `🌐 Obtener URL público`.
 1. Cuanto estés listo para publicarla, haz clic en `🔄 AutoSlides` > `⚙️ Configurar` y establece los ajustes de publicación, que determinarán como se visualizará tu presentación.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74887855-73ad2a80-537c-11ea-8e90-c500de653000.png"></p>
+
 ![Selección_999(219)](https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png)
 1. Sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que seguirlo una vez (por cada presentación en la que uses AutoSlides).

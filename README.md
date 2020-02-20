@@ -86,7 +86,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 
-6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` :: `🌐 Obtener URL público` y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites. Existe una limitación, no obstante.
+6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` :: `🌐 Obtener URL público` y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888641-dd2e3880-537e-11ea-9923-e383b54ca195.png"></p>
 

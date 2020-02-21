@@ -137,7 +137,7 @@ function refrescarGraficosHdc() {
   <label for="numFil">Avance automático cada (s)</label>
   <input class="validate" type="number" name="sAvanzar" value="<?= sAvanzar ?>" min="1" step="1" id="sAvanzar">
   </div>
- </div>
+</div>
  ```
 
 ```html

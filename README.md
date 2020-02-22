@@ -19,7 +19,7 @@ Las presentaciones de Google disponen de una función de publicación que facili
 
 # ¿Qué puede hacer AutoSlides?
 AutoSlide dispone de las siguientes características y funciones:
-+ Publicación de la presentación (de modo análogo a :computer_mouse: `Archivo` :: `Publicar`) e incrustación por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar su estado de publicación utilizando los propios menús de AutoSlides.
++ Publicación de la presentación (de modo análogo a :computer_mouse: `Archivo` ⏩ `Publicar`) e incrustación por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar su estado de publicación utilizando los propios menús de AutoSlides.
 + Actualización automática de la presentación incrustada a intervalos establecidos por el usuario, utilizando una transición suave al recargarla. De este modo se pueden introducir modificaciones en las diapositivas, que acabarán siendo visualizadas en cualquier soporte web donde se esté mostrando la webapp.
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
@@ -74,7 +74,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 1. Obtén una copia de la **plantilla de AutoSlides** abriendo este enlace :point_right: [AutoSlides # plantilla](https://docs.google.com/presentation/d/1OVA_tBC5QM4vQhJeZzQLag7ktV2vPvWmVfcF46KO1_8/template/preview) :point_left: y a continuación haz clic en `Utilizar plantilla`.
 
 2. Edita tu presentación del modo habitual.
-3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` :: `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
+3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` ⏩ `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74887855-73ad2a80-537c-11ea-8e90-c500de653000.png"></p>
 
@@ -82,15 +82,15 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888030-1796d600-537d-11ea-90c1-975c4f1ccf44.png"></p>
 
-5. A continuación, clic en `🔄 AutoSlides` :: `🌐 Obtener URL público` y sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que completarlo una vez (por cada presentación en la que uses AutoSlides).
+5. A continuación, clic en `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` y sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que completarlo una vez (por cada presentación en la que uses AutoSlides).
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 
-6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` :: `🌐 Obtener URL público` y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.
+6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888641-dd2e3880-537e-11ea-9923-e383b54ca195.png"></p>
 
-7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` :: `🔻 Detener publicación`.
+7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` ⏩ `🔻 Detener publicación`.
 
 # Detalles técnicos
 Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de detalles esto te lo puedes saltar sin remordimientos.
@@ -222,7 +222,7 @@ try {
 
 >La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse de manera específica, así que mejor hablaremos de ello en otra ocasión.
 
-- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (función `doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` :: `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
+- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (función `doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer :computer_mouse: `Archivo` ⏩ `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
 ```javascript
 function doGet(e) {

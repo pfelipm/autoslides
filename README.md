@@ -111,7 +111,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 <p>Más información en su <a target="_blank" src="https://github.com/pfelipm/autoslides">Repositorio GitHub</a>.</p>
 ```
 
-- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (funciones `contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo con tablas (rangos de celdas) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de ellos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es) y vincular estos en nuestras presentaciones y vincular estos últimos. Hubiera preferido resolver esto de un modo más compacto usando *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino*  para poder obtener la URL pública de la webapp.
+- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (funciones `contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo directamente con tablas (rangos de datos) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de estos datos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es). Hubiera preferido resolver esto de un modo más compacto usando *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino*  para poder obtener la URL pública de la webapp.
 
 ```javascript
 function refrescarGraficosHdc() { 
@@ -176,7 +176,7 @@ function ajustesPorDefecto() {
 }
 ```
 
-- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API del cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (función `actualizarAjustes`). A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. Una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento correspondiente.
+- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API de cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (función `actualizarAjustes`). A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. Una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento.
 
 ```javascript
 function actualizarAjustes(form) {
@@ -199,7 +199,9 @@ function actualizarAjustes(form) {
 
 ```
 
-- Localizar la versión más reciente de la presentación (función `obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (función `despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se mostrará un nuevo panel lateral con instrucciones para el usuario (archivo `instruccionesWebApp.html`). En caso de que se detecte que la webapp ya haya sido desplegada simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que tenerlo en cuenta para no dejarse nada.
+- Localizar la versión más reciente de la presentación (función `obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (función `despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se desplegará otro panel lateral con las correspondientes instrucciones para el usuario (archivo `instruccionesWebApp.html`).
+
+En caso de que se detecte que la webapp ya ha sido publicada, simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. A continuación se identificará la última edición (versión) de la presentación y se publicará, de modo análogo a como se haría  manualmente con `Archivo` ⏩ `Publicar`. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que tenerlo en cuenta para tener la seguridad de que alcanzamos realmente la última.
 
 ```javascript
 ...
@@ -220,9 +222,11 @@ try {
 ...
 ```
 
->La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no ha hecho sino afilar. La cosa da para extenderse de manera específica, así que mejor hablaremos de ello en otra ocasión.
+>La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no han hecho sino afilar. La cosa da para extenderse de manera específica, así que mejor hablaremos de ello en otra ocasión.
 
-- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (función `doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer `Archivo` ⏩ `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública). La página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
+- Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (función `doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer `Archivo` ⏩ `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública).
+
+Por otro lado, la página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
 ```javascript
 function doGet(e) {
@@ -252,7 +256,7 @@ function doGet(e) {
   return formularioWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 ```
-Dejando de lado las distintas funciones que forman parte del código de AutoSlides, veamos ahora qué hay en el interior de `slidesEmbed.html`, el archivo HTML donde realmente se realiza la incrustación de la presentación. Es corto pero tiene algún que otro detalle interesante. Vamos primero el código de incrustación:
+Dejando de lado las distintas funciones que forman parte del código de AutoSlides, veamos ahora qué hay en el interior de `slidesEmbed.html`, el archivo HTML donde realmente se realiza la incrustación de la presentación. Es corto pero tiene algún que otro detalle interesante. Vamos primero con el código de incrustación:
 
 ```html
  <div id="marco1"
@@ -279,7 +283,7 @@ Dejando de lado las distintas funciones que forman parte del código de AutoSlid
 ```
 
 Intervienen aquí numerosos scriptlets de parametrización, que son instanciados, como hemos visto, en la función `doGet`:
-- `<?= aspecto ?>`: Aparece en el bloque `DIV` exterior. Se emplea como relleno inferior de la capa para conseguir una visualización adaptada al tamaño de la ventana (*responsive*) con independencia de la relación de aspecto de la presentación. Para que esto funcione es necesario que el `<iframe>` interior tenga un posicionamiento de tipo absoluto.
+- `<?= aspecto ?>`: Aparece en el bloque `DIV` exterior. Se emplea para ajustar el relleno inferior de la capa exterior (`marco1`) para conseguir una visualización adaptada al tamaño de la ventana (*responsive*) con independencia de la relación de aspecto de la presentación. Para que esto funcione es necesario que el `<iframe>` interior (`marco2`) tenga un posicionamiento CSS de tipo absoluto.
 - `<?= insetSuperior ?>`, `<?= insetLateral ?>`, `<?= insetInferior ?>`: Se utilizan para recortar las bandas laterales, la barra inferior y, en su caso, los bordes del marco incrustado empleando la propiedad CSS `clip-path`.
 - `<?= url ?>`: El URL de la versión publicada de la presentación.
 - `<?= iniciar ?>`, `<?= repetir ?>`: Controlan si la presentación debe comenzar a reproducirse automáticamente al cargar y si se repite tras la proyección de la última diapositiva.
@@ -307,7 +311,7 @@ Esto resuelve la incrustación parametrizada, solo falta ahora que el marco inte
 ```
 Para que la recarga del contenido del marco interior (con la presentación) sea suave se juega con su propiedad `opacity`, sobre la que se ha establecido previamente una transición de 1 segundo. Además, gracias a una [promesa JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise), se introduce un retardo de `<?= msFundido ?>` milisengudos antes de volver a hacer visible la presentación.
 
-Finalmente, todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar`:
+Todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar` cuando se realiza la carga inicial en el navegador del usuario:
 
 ```html
 <body> 
@@ -331,7 +335,7 @@ Finalmente, todo este bloque que resuelve la incrustación y refresco de la pres
 Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script, justo antes de ser enviada al navegador del usuario. Si se modifican los ajustes de AutoSlides será necesario, ahora sí, recargar manualmente la página servida por la webapp para que tengan efecto.
 
 No quiero acabar sin comentar 2 detalles adicionales:
-- Es la primera vez que incluyo imágenes como elementos informativos o meramente decorativos en un desarrollo GAS. Resulta realmente práctico embeber estas imágenes en el código HTML del proyecto. Para ello hay que asignarle al atributo `src` del tag `<IMG>` una cadena con el prefijo `data:image/{tipo};base64` seguida del contenido binario de la imagen codificado en Base64. Para ello puedes utilizar cualquier conversor en línea, [este](https://www.base64-image.de/) por ejemplo.
+- Es la primera vez que incluyo imágenes como elementos informativos o meramente decorativos en un desarrollo GAS. Resulta realmente práctico embeber estas imágenes en el código HTML del proyecto. Para ello hay que asignarle al atributo `src` del tag `<IMG>` una cadena con el prefijo `data:image/{tipo};base64` seguida del contenido binario de la imagen codificado en Base64. Para ello puedes utilizar cualquier conversor en línea, [este](https://www.base64-image.de/) por ejemplo. No obstante al editor le pesan estas interminables secuencia de caracteres, así que mejor no excederse con esto y, en cualquier caso, utilizarlas en archivos independientes específicos del proyecto GAS.
 
 ```html
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa...">

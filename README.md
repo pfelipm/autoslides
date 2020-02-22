@@ -52,11 +52,11 @@ La presentación publicada, visible en la ventana del navegador (derecha), refle
 
 ![74866819-c6beb780-5353-11ea-9591-918299d3ccb0](https://user-images.githubusercontent.com/12829262/74886315-11eac180-5378-11ea-83b6-f4659f8afa2e.gif)
 
-Podríamos mostrar la versión publicada a pantalla completa en un **monitor visible en un espacio público** (al hacer clic sobre la presentación y pulsar `F11` se pasa a una vista de pantalla completa, sin elementos accesorios) o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
+Podríamos mostrar la versión publicada en un **monitor visible en un espacio público** (al hacer clic sobre la presentación y pulsar `F11` se pasa a una vista de pantalla completa, sin elementos accesorios) o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
 
 ![74867638-50bb5000-5355-11ea-96c4-7e2a8ea60426](https://user-images.githubusercontent.com/12829262/74886377-49f20480-5378-11ea-8b1b-e5d10dcaeffa.gif)
 
-Además, AutoSlides utiliza CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegador sin dejar bandas negras. También es posible, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
+Además, AutoSlides utiliza unas gotitas de CSS para conseguir que la presentación se ajuste dinámicamente al tamaño de la ventana del navegador sin dejar bandas negras. También es posible, si lo deseamos, eliminar la botonera inferior o los bordes del marco de la presentación.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886543-bbca4e00-5378-11ea-9ba0-260ba7d0fe74.gif"></p>
 
@@ -82,7 +82,7 @@ Por último, si el usuario crea un activador GAS temporal que ejecute a interval
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888030-1796d600-537d-11ea-90c1-975c4f1ccf44.png"></p>
 
-5. A continuación, clic en `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` y sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que completarlo una vez (por cada presentación en la que uses AutoSlides).
+5. A continuación, haz clic en `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` y sigue al pie de la letra las instruciones que aparecerán en el panel lateral. Este procedimiento solo tendrás que completarlo una vez (por cada presentación en la que uses AutoSlides).
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 

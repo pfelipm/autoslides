@@ -64,7 +64,7 @@ Aprecia la diferencia que existe entre la inserción convencional :thumbsdown: y
 
 ![74869376-261ec680-5358-11ea-8f68-f9b842629044](https://user-images.githubusercontent.com/12829262/74886759-5165dd80-5379-11ea-8a62-5f3192c130a9.png)
 
-Por último, si el usuario crea un activador GAS temporal que ejecute a intervalos regulares la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, conseguiremos que los gráficos de hoja de cálculo vinculados se actualicen también *automágicamente*. Por ejemplo, en la imagen del ejemplo se establece una cadencia de actualización de 5 minutos.
+Por último, si el usuario crea un activador Apps Script disparado por tiempo que ejecute a intervalos regulares la función `refrescarGraficosHdc`, que forma parte del código de AutoSlides, conseguiremos que los gráficos de hoja de cálculo vinculados se actualicen también *automágicamente*. Por ejemplo, en la imagen del ejemplo se establece una cadencia de actualización de 5 minutos.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886825-8114e580-5379-11ea-876f-1f691fb14d85.gif"></p>
 

@@ -104,7 +104,7 @@ AutoSlides es un script GAS que vive dentro de una presentación de Google, faci
 La mayor parte del código vive dentro del archivo `Código.gs`. En él se encuentran las **funciones** necesarias para:
 
 - Construir el **menú** de la aplicación (`onOpen`).
-- Mostrar **información** sobre AutoScript (función `acercaDe`, que visualiza el archivo HTML `acercaDe.html`, inyectando como parámetro mediante un scriptlet explícito (*printing scriptlet*) la cadena que identifica la versión del script (`VERSION`). Esto se consigue gracias al servicio de [plantillas HTML](https://developers.google.com/apps-script/guides/html/templates).
+- Mostrar **información** sobre AutoScript a través de la función `acercaDe`, que visualiza el archivo HTML `acercaDe.html`, inyectando como parámetro mediante un scriptlet explícito (*printing scriptlet*) la cadena que identifica la versión del script (`VERSION`). Esto se consigue gracias al servicio de [plantillas HTML](https://developers.google.com/apps-script/guides/html/templates).
 
 ```javascript
 <p><?= version ?>.</p>

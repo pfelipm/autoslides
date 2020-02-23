@@ -231,7 +231,7 @@ Por otro lado, la página web genererada se devuelve con `XFrameOptionsMode.ALLO
 ```javascript
 function doGet(e) {
 
-  // Generar formulario web 
+  // Generar página web con presentación incrustada
 
   var formularioWeb = HtmlService.createTemplateFromFile('slidesEmbed');
   

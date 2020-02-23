@@ -111,7 +111,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 <p>Más información en su <a target="_blank" src="https://github.com/pfelipm/autoslides">Repositorio GitHub</a>.</p>
 ```
 
-- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (funciones `contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo directamente con tablas (rangos de datos) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de estos datos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es). Hubiera preferido resolver esto de un modo más compacto usando *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino*  para poder obtener la URL pública de la webapp.
+- Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (funciones `contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo directamente con tablas (rangos de datos) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de estos datos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es). Hubiera preferido resolver esto de un modo más compacto usando *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino* para poder obtener desde el código la URL pública de la webapp.
 
 ```javascript
 function refrescarGraficosHdc() { 

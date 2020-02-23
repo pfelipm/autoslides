@@ -259,25 +259,26 @@ function doGet(e) {
 Dejando de lado las distintas funciones que forman parte del código de AutoSlides, veamos ahora qué hay en el interior de `slidesEmbed.html`, el archivo HTML donde realmente se realiza la incrustación de la presentación. Es corto pero tiene algún que otro detalle interesante. Vamos primero con el código de incrustación:
 
 ```html
- <div id="marco1"
-      style="display: block;
-             position: relative;
-             padding-bottom: <?= aspecto ?>%;
-             height: 0;
-             overflow: hidden;
-             border: none;">
+<div id="marco1"
+     style="display: block;
+            position: relative;
+            padding-bottom: <?= aspecto ?>%;
+            height: 0;
+            overflow: hidden;
+            border: none;">
                          
-   <iframe id="marco2"
-           style="transition: opacity 1s;
-                  position:absolute;
-                  width: 100%; height: 100%;
-                  clip-path: inset(<?= insetSuperior ?>px <?= insetLateral ?>px <?= insetInferior ?>px <?= insetLateral ?>px)";
-           src="<?= url ?>
-                ?start=<?= iniciar ?>
-                &loop=<?= repetir ?>
-                &delayms=<?= msAvanzar ?>"
+  <iframe id="marco2"
+          style="transition: opacity 1s;
+                 position:absolute;
+                 width: 100%; height: 100%;
+                 clip-path: inset(<?= insetSuperior ?>px <?= insetLateral ?>px <?= insetInferior ?>px <?= insetLateral ?>px)";
+          src="<?= url ?>
+               ?start=<?= iniciar ?>
+               &loop=<?= repetir ?>
+               &delayms=<?= msAvanzar ?>"
            frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"> 
-   </iframe>
+  </iframe>
+  
 </div>
 ```
 
@@ -291,22 +292,22 @@ Intervienen aquí numerosos scriptlets de parametrización, que son instanciados
 Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario. Esto se consigue con esta sencilla función JavaScript, que cambia su atributo `src` periódicamente de acuerdo con el parámetro `<?= msRecargar ?>` asociado a una función invocada mediante `setInterval`.
 
 ```javascript
-  <script>
+<script>
   
-    setInterval(function(){
+  setInterval(function(){
       
-      document.getElementById("marco2").style.opacity = 0;
+    document.getElementById("marco2").style.opacity = 0;
       
-      sleep(1000).then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";});
-      sleep(<?= msFundido ?>).then(() => {document.getElementById("marco2").style.opacity = 1;});
+    sleep(1000).then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";});
+    sleep(<?= msFundido ?>).then(() => {document.getElementById("marco2").style.opacity = 1;});
            
-    }, <?= msRecargar ?>);
+  }, <?= msRecargar ?>);
     
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
     
-  </script>
+</script>
 ```
 Para que la recarga del contenido del marco interior (con la presentación) sea suave se juega con su propiedad `opacity`, sobre la que se ha establecido previamente una transición de 1 segundo. Además, gracias a una [promesa JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise), se introduce un retardo de `<?= msFundido ?>` milisengudos antes de volver a hacer visible la presentación.
 

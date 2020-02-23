@@ -316,7 +316,7 @@ Todo este bloque que resuelve la incrustación y refresco de la presentación es
 ```html
 <body> 
   
-  <!-- Mostrar presentación incrustada si publicación activada -->
+  <!-- Mostrar presentación incrustada si publicación activada y ajustes inicializados -->  
   
   <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true' && 
          PropertiesService.getDocumentProperties().getProperty('inicializado') == 'true' ) { ?>

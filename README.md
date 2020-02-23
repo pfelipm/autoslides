@@ -233,26 +233,26 @@ function doGet(e) {
 
   // Generar página web con presentación incrustada
 
-  var formularioWeb = HtmlService.createTemplateFromFile('slidesEmbed');
+  var incrustaWeb = HtmlService.createTemplateFromFile('slidesEmbed');
   
   // Rellenar elementos de plantilla
   var ajustes = PropertiesService.getDocumentProperties().getProperties();
   var aspecto = 100 * SlidesApp.getActivePresentation().getPageHeight() / SlidesApp.getActivePresentation().getPageWidth();
   var offsetPx = ajustes.eliminarBordes == 'on' ? INSET_BORDES : 0; 
-  formularioWeb.url =  'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
-  formularioWeb.iniciar = ajustes.iniciar == 'on' ? 'true' : 'false';
-  formularioWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';
-  formularioWeb.msAvanzar = (+ajustes.sAvanzar * 1000).toString();
-  formularioWeb.msFundido = ajustes.msFundido;
-  formularioWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
-  formularioWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
-  formularioWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
-  formularioWeb.insetSuperior = offsetPx.toString();
+  incrustaWeb.url =  'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
+  incrustaWeb.iniciar = ajustes.iniciar == 'on' ? 'true' : 'false';
+  incrustaWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';
+  incrustaWeb.msAvanzar = (+ajustes.sAvanzar * 1000).toString();
+  incrustaWeb.msFundido = ajustes.msFundido;
+  incrustaWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
+  incrustaWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
+  incrustaWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
+  incrustaWeb.insetSuperior = offsetPx.toString();
 
   // Para "truco" CSS que hace el iframe responsive
-  formularioWeb.aspecto = aspecto.toString();
+  incrustaWeb.aspecto = aspecto.toString();
   
-  return formularioWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  return incrustaWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 ```
 Dejando de lado las distintas funciones que forman parte del código de AutoSlides, veamos ahora qué hay en el interior de `slidesEmbed.html`, el archivo HTML donde realmente se realiza la incrustación de la presentación. Es corto pero tiene algún que otro detalle interesante. Vamos primero con el código de incrustación:

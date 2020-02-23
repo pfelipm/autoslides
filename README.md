@@ -278,7 +278,6 @@ Dejando de lado las distintas funciones que forman parte del código de AutoSlid
                 &delayms=<?= msAvanzar ?>"
            frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"> 
    </iframe>
- 
 </div>
 ```
 
@@ -289,7 +288,7 @@ Intervienen aquí numerosos scriptlets de parametrización, que son instanciados
 - `<?= iniciar ?>`, `<?= repetir ?>`: Controlan si la presentación debe comenzar a reproducirse automáticamente al cargar y si se repite tras la proyección de la última diapositiva.
 - `<?= msAvanzar ?>`: Velocidad de avance de diapositiva, en milisegundos.
 
-Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario. Esto se consigue con este sencilla función JavaScript, que cambia su atributo `src` periódicamente de acuerdo con el parámetro `<?= msRecargar ?>` asociado a una función invocada mediante `setInterval`.
+Esto resuelve la incrustación parametrizada, solo falta ahora que el marco interior (`marco2`) se recargue automáticamente de acuerdo con el intervalo establecido por el usuario. Esto se consigue con esta sencilla función JavaScript, que cambia su atributo `src` periódicamente de acuerdo con el parámetro `<?= msRecargar ?>` asociado a una función invocada mediante `setInterval`.
 
 ```javascript
   <script>
@@ -311,7 +310,7 @@ Esto resuelve la incrustación parametrizada, solo falta ahora que el marco inte
 ```
 Para que la recarga del contenido del marco interior (con la presentación) sea suave se juega con su propiedad `opacity`, sobre la que se ha establecido previamente una transición de 1 segundo. Además, gracias a una [promesa JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise), se introduce un retardo de `<?= msFundido ?>` milisengudos antes de volver a hacer visible la presentación.
 
-Todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar` cuando se realiza la carga inicial en el navegador del usuario:
+Todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar` y obra en consecuencia en el momento en que se genera la página y expanden también el resto de scriptlets:
 
 ```html
 <body> 

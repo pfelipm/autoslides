@@ -175,7 +175,7 @@ function obtenerRevisiones() {
       hayMas = (token == undefined) ? false : true;
     }
     
-    // Publicar última revisión de la presentación
+    // Devolver última revisión
     
     return revisiones[revisiones.length-1].id;
     

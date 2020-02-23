@@ -317,8 +317,9 @@ Todo este bloque que resuelve la incrustación y refresco de la presentación es
 <body> 
   
   <!-- Mostrar presentación incrustada si publicación activada -->
-
-  <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true') { ?>
+  
+  <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true' && 
+         PropertiesService.getDocumentProperties().getProperty('inicializado') == 'true' ) { ?>
 
     <!-- Aquí va la parte que muestra / refresca la presentación -->
     ...
@@ -332,7 +333,7 @@ Todo este bloque que resuelve la incrustación y refresco de la presentación es
 </body>
 ```
 
-Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script, justo antes de ser enviada al navegador del usuario. Si se modifican los ajustes de AutoSlides será necesario, ahora sí, recargar manualmente la página servida por la webapp para que tengan efecto.
+Recordemos que los scriptlets son un poderoso mecanismo para generar código HTML dinámico. Pero este *dinamismo* se limita al momento en que la plantilla HTML que los contiene es evaluada con el método `.evaluate()` del servicio `Html` de Apps Script, justo antes de ser enviada al navegador del usuario. Si se modifican los ajustes de AutoSlides (o se desactiva la publicación de la presentación) será necesario, ahora sí, recargar manualmente la página servida por la webapp para que los cambios tengan efecto.
 
 No quiero acabar sin comentar 2 detalles adicionales:
 - Es la primera vez que incluyo imágenes como elementos informativos o meramente decorativos en un desarrollo GAS. Resulta realmente práctico embeber estas imágenes en el código HTML del proyecto. Para ello hay que asignarle al atributo `src` del tag `<IMG>` una cadena con el prefijo `data:image/{tipo};base64` seguida del contenido binario de la imagen codificado en Base64. Para ello puedes utilizar cualquier conversor en línea, [este](https://www.base64-image.de/) por ejemplo. No obstante al editor Apps Script le pesan estas interminables secuencia de caracteres, así que mejor no excederse con esto y, en cualquier caso, utilizarlas en archivos independientes específicos del proyecto GAS.

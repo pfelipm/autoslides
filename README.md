@@ -52,7 +52,7 @@ La presentación publicada, visible en la ventana del navegador (derecha), refle
 
 ![74866819-c6beb780-5353-11ea-9591-918299d3ccb0](https://user-images.githubusercontent.com/12829262/74886315-11eac180-5378-11ea-83b6-f4659f8afa2e.gif)
 
-Podríamos mostrar la versión publicada en un **monitor visible en un espacio público** (al hacer clic sobre la presentación y pulsar `F11` se pasa a una vista de **pantalla completa**, sin elementos accesorios ni márgenes de ningún tipo) o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
+Podríamos mostrar la versión publicada en un **monitor visible en un espacio público** (al hacer clic sobre la presentación y pulsar `F11` se pasa a una vista de **pantalla completa**, sin elementos accesorios ni márgenes de ningún tipo, aunque esto depende del navegador utilizado) o simplemente incrustar la página web servida por AutoSlides en cualquier **sitio web informativo**, por ejemplo creado con Google Sites.
 
 ![74867638-50bb5000-5355-11ea-96c4-7e2a8ea60426](https://user-images.githubusercontent.com/12829262/74886377-49f20480-5378-11ea-8b1b-e5d10dcaeffa.gif)
 

@@ -232,7 +232,7 @@ Por otro lado, la página web genererada se devuelve con `XFrameOptionsMode.ALLO
 function doGet(e) {
 
   // Generar formulario web 
-  var urlPres = 'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
+
   var formularioWeb = HtmlService.createTemplateFromFile('slidesEmbed');
   
   // Rellenar elementos de plantilla

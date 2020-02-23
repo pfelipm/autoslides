@@ -238,8 +238,7 @@ function doGet(e) {
   // Rellenar elementos de plantilla
   var ajustes = PropertiesService.getDocumentProperties().getProperties();
   var aspecto = 100 * SlidesApp.getActivePresentation().getPageHeight() / SlidesApp.getActivePresentation().getPageWidth();
-  var offsetPx = ajustes.eliminarBordes == 'on' ? INSET_BORDES : 0;
-  
+  var offsetPx = ajustes.eliminarBordes == 'on' ? INSET_BORDES : 0; 
   formularioWeb.url =  'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
   formularioWeb.iniciar = ajustes.iniciar == 'on' ? 'true' : 'false';
   formularioWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';

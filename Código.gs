@@ -58,7 +58,7 @@ function acercaDe() {
 
 function refrescarGraficosHdc() {
     
-  // Versión V8. No se utiliza para seguir ejecutando con Rhino por bug V8 y ScriptApp.GetService().getUrl()
+  // Versión V8: No se utiliza por bug V8 y ScriptApp.GetService().getUrl()
   // https://groups.google.com/d/topic/google-apps-script-community/0snPFcUqt40/discussion
   
   // SlidesApp.getActivePresentation().getSlides().map(diapo => {diapo.getSheetsCharts().map(grafico => {grafico.refresh();});});
@@ -129,7 +129,7 @@ function configurar() {
 function ajustesPorDefecto() {
   
   // Invocado desde panelLateral_js
-  // Restablecer ajustes por defecto (false para preservar propiedad 'publicar' actual)
+  // Restablecer ajustes por defecto (,false para preservar otras propiedades)
   
   PropertiesService.getDocumentProperties().setProperties(AJUSTES_P, false);
   
@@ -198,7 +198,7 @@ function acortarUrl() {
   
   if (urlCorto == null) {
     
-    // No se ha acortado aún, lo haremos ahora guardaremos URL corto en propiedades
+    // No se ha acortado aún, lo haremos ahora y guardaremos URL corto en propiedades
   
     urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();
     PropertiesService.getDocumentProperties().setProperty('urlCorto', urlCorto);

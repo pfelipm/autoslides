@@ -92,7 +92,9 @@ Por último, si el usuario crea un activador Apps Script disparado por tiempo qu
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75167570-df4d1a00-5725-11ea-9f87-e9772d9c071c.png"></p>
 
-7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` ⏩ `🔻 Detener publicación`.
+7. Al reproducir la presentación en tu navegador, recuerda que con `TAB` puedes situar el foco sobre la presentación y con `F11` activar o desactivar la visualización en pantalla completa.
+
+8. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` ⏩ `🔻 Detener publicación`.
 
 # Detalles técnicos
 Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de detalles esto te lo puedes saltar sin remordimientos.
@@ -101,7 +103,7 @@ Echemos un mirada bajo el capó de AutoSlides. Si no te interesan este tipo de d
 
 AutoSlides es un script GAS que vive dentro de una presentación de Google, facilitada como **plantilla**. El modo más fácil de usarlo es hacerse una copia de esta plantilla y trabajar sobre ella para construir una nueva presentación. Dado que el código de AutoSlides está compuesto por varios archivos, no resulta práctico incluir manualmente todos ellos en una presentación ya existente.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74946260-4fdbfa00-53f9-11ea-98b9-213226c7f2f8.png"></p>
+![Selección_999(228)](https://user-images.githubusercontent.com/12829262/75179851-45906780-573b-11ea-97ad-a18030a50e92.png)
 
 La mayor parte del código vive dentro del archivo `Código.gs`. En él se encuentran las **funciones** necesarias para:
 

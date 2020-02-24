@@ -206,7 +206,7 @@ function acortarUrl() {
   
     urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();
     PropertiesService.getDocumentProperties().setProperty('urlCorto', urlCorto);
-    Logger.log('Llamada a TinyURL');
+    
   }
   
   return urlCorto;

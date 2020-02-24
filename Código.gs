@@ -99,10 +99,6 @@ function configurar() {
     
     PropertiesService.getDocumentProperties().setProperty('publicar', 'false');
     
-    // ...y no tenemos URL corto
-    
-    PropertiesService.getDocumentProperties().setProperty('urlCorto', 'false');
-
   }
   
   // Plantilla del panel

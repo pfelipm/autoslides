@@ -24,7 +24,7 @@ AutoSlide dispone de las siguientes características y funciones:
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
   + Tiempo de avance entre diapositivas (s).
-  + Periodicidad de recarga de la presentación (s).
+  + Periodicidad de recarga de la presentación (s). Si se selecciona 0 la presentación nunca se recarga.
   + Retardo tras fundido en recarga (ms). Se recomienda un valor de al menos 1500 ms para lograr una transición suave sin artefactos visuales.
   + Inicio automático (sí / no).
   + Repetición cíclica (sí / no).
@@ -112,7 +112,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 
 ```javascript
 <p><?= version ?>.</p>
-<p>Más información en su <a target="_blank" src="https://github.com/pfelipm/autoslides">Repositorio GitHub</a>.</p>
+<p>Más información en su <a target="_blank" href="https://github.com/pfelipm/autoslides">Repositorio GitHub</a>.</p>
 ```
 
 - Contabilizar y actualizar los **gráficos vinculados** de hoja de cálculo (funciones `contarGraficosHdc` y `refrescarGraficosHdc`). No parece haber en la clase GAS `SlidesApp` facilidades para hacer lo mismo directamente con tablas (rangos de datos) de hoja de cálculo vinculados del mismo modo. Una posible solución, que quizás no siempre será adecuada, consiste en generar a partir de estos datos [gráficos de tipo tabla](https://support.google.com/docs/answer/9146787?hl=es). Hubiera preferido resolver esto de un modo más compacto usando *funciones flecha*, ya admitidas en Apps Script, pero desgraciadamente me he visto obligado a configurar AutoSlides con el antiguo motor de ejecución *Rhino* para poder obtener desde el código la URL pública de la webapp.

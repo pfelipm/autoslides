@@ -33,15 +33,18 @@
     }
     
     function copiar() {
+    
       var txtUrl = document.querySelector('#url');
       txtUrl.disabled = false;
       txtUrl.select();
       document.execCommand('copy');
       txtUrl.disabled = true;
       document.querySelector('#msg').innerHTML = '✔️ URL copiado';
+      
     }
     
     function acortar() {
+    
       document.querySelector('#acortar').disabled = true; // desactivar mientras se procesa
       if (document.querySelector('#acortar').checked == true) {
         google.script.run
@@ -49,7 +52,6 @@
             document.querySelector('#url').value = urlCorto;
             document.querySelector('#msg').innerHTML = '';
             document.querySelector('#acortar').disabled = false; // reactivar tras procesar
-
           })
           .withFailureHandler(function() {
             document.querySelector('#msg').innerHTML = '❌ Error al acortar con TinyURL';

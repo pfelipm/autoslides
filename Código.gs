@@ -196,7 +196,7 @@ function obtenerRevisiones() {
 
 function acortarUrl() {
   
-  // 
+  // Invocado desde panelLateral_js
   
   var urlCorto = PropertiesService.getDocumentProperties().getProperty('urlCorto');
   

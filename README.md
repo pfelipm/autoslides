@@ -88,7 +88,7 @@ Por último, si el usuario crea un activador Apps Script disparado por tiempo qu
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 
-6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` para activar totalmente la webapp y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites. El URL puede ser acortado (mediante el servicio gratuito de TinyURL) y copiado al portapapeles.
+6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` para activar totalmente la webapp y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites. El URL puede ser acortado (mediante el servicio gratuito de TinyURL) y copiado fácilmente al portapapeles.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75167570-df4d1a00-5725-11ea-9f87-e9772d9c071c.png"></p>
 

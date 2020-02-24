@@ -233,7 +233,7 @@ try {
 Esta estrategia evita que el usuario tenga que registrarse en un servicio de enlaces cortos para obtener de él un token de uso, que posteriormente debería ser introducido en el código de AutoSlides.
   
 ```javascript
-var TINYURL = 'https://tinyurl.com/api-create.php?url='  
+var TINYURL = 'https://tinyurl.com/api-create.php?url=';
 ...
 urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();
 ```

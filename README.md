@@ -232,7 +232,7 @@ try {
 - Acortar el URL público de la webapp (función `acortarUrl`). Se recurre al servicio anónimo y gratuito de [TinyURL](https://tinyurl.com), al que se le realiza una petición `HTTPS` especialmente formada por medio de la clase `UrlFetchApp`. 
 Esta estrategia evita que el usuario tenga que registrarse en un servicio de enlaces cortos para obtener de él un token de uso, que posteriormente debería ser introducido en el código de AutoSlides.
   
-```
+```javascript
 var TINYURL = 'https://tinyurl.com/api-create.php?url='  
 ...
 urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();

@@ -28,7 +28,7 @@ var AJUSTES_P = {
 var INSET_INFERIOR = 28; // Altura en px barra con botones inferior en presentación incrustada
 var NUMERO_MAGICO = 14.25; // x ancho/alto para obtener el valor en px del recorte lateral que elimina bandas negras
 var INSET_BORDES = 2;      // Desplazamiento adicional para eliminar todos los bordes mediante clip-path / inset (CSS) 
-var TINYURL = 'https://tinyurl.com/api-create.php?url=' // URL para acortar usando servicio de TinyURL  
+var TINYURL = 'https://tinyurl.com/api-create.php?url='; // URL para acortar usando servicio de TinyURL  
 
 // Vamos a por faena...
 

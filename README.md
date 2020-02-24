@@ -24,7 +24,7 @@ AutoSlide dispone de las siguientes características y funciones:
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
   + Tiempo de avance entre diapositivas (s).
-  + Periodicidad de recarga de la presentación (s).
+  + Periodicidad de recarga de la presentación (s). Se recomienda utilizar un tiempo superior al necesario para al menos un pase completo de todas las diapositivas.
   + Retardo tras fundido en recarga (ms). Se recomienda un valor de al menos 1500 ms para lograr una transición suave sin artefactos visuales.
   + Inicio automático (sí / no).
   + Repetición cíclica (sí / no).

@@ -31,7 +31,7 @@ AutoSlide dispone de las siguientes características y funciones:
   + Eliminación del panel de botones habitual en las presentaciones incrustadas (sí / no).
   + Eliminación de las bandas laterales negras habituales en las presentaciones incrustadas (sí / no).
   + Eliminación del borde del marco de incrustación (sí / no).
-  + Selección del color de fondo de la página web que inscrusta la presentación.
+  + Selección del color de fondo de la página web que incrusta la presentación.
 + Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script (`refrescarGraficosHdc`) para actualizar también estos gráficos a intervalos específicos a partir de sus datos numéricos de origen.
 
 ![esquema](https://user-images.githubusercontent.com/12829262/74886127-9e48b480-5377-11ea-80ca-09f626e40f0d.png)

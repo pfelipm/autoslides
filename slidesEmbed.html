@@ -5,11 +5,12 @@
     <base target="_top">
   </head>
   
-  <body>
+  <body style="background-color:<?= colorFondo ?>; margin: 0; padding: 0">
   
-  <!-- Mostrar presentación incrustada si publicación activada -->
+  <!-- Mostrar presentación incrustada si publicación activada y ajustes inicializados -->
   
-  <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true') { ?>
+  <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true' && 
+         PropertiesService.getDocumentProperties().getProperty('inicializado') == 'true' ) { ?>
   
     <div id="marco1" style="display: block; position: relative; padding-bottom: <?= aspecto ?>%; height: 0; overflow: hidden; border: none;">
       <iframe id="marco2" style="transition: opacity 1s; position:absolute; width: 100%; height: 100%; clip-path: inset(<?= insetSuperior ?>px <?= insetLateral ?>px <?= insetInferior ?>px <?= insetLateral ?>px)";

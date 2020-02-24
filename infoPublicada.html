@@ -7,17 +7,67 @@
   </head>
   
   <body>
-    <div>    
-    <p><?!= mensaje ?></p>
+    <div>
+      <label for="url">🌐️ URL de la presentación publicada:</label><br>
+      <textarea id="url" rows="2" cols="95" disabled><?!= url ?></textarea>
+    </div>
+    <input type="checkbox" id="acortar" name="acortar" value="acortar" onclick = "acortar()"><label for="acortar">Acortar URL (con TinyURL)</label>
+    <div>
+      <button id="abrir" onclick = "probar()">Probar</button>
+      <button id="copiar" onclick = "copiar()">Copiar</button>
+      <span id="msg"></span>
     </div>
     <br>
     <button id="cerrar" onclick = "cerrar()">OK</button>   
   </body>
   
   <script> 
+  
     function cerrar() {
       google.script.host.close();
-    }   
+    }
+    
+    function probar() {
+      var txtUrl = document.querySelector('#url').value;
+      window.open(txtUrl);
+    }
+    
+    function copiar() {
+      var txtUrl = document.querySelector('#url');
+      txtUrl.disabled = false;
+      txtUrl.select();
+      document.execCommand('copy');
+      txtUrl.disabled = true;
+      document.querySelector('#msg').innerHTML = '✔️ URL copiado';
+    }
+    
+    function acortar() {
+      document.querySelector('#acortar').disabled = true; // desactivar mientras se procesa
+      if (document.querySelector('#acortar').checked == true) {
+        google.script.run
+          .withSuccessHandler(function(urlCorto) {
+            document.querySelector('#url').value = urlCorto;
+            document.querySelector('#msg').innerHTML = '';
+            document.querySelector('#acortar').disabled = false; // reactivar tras procesar
+
+          })
+          .withFailureHandler(function() {
+            document.querySelector('#msg').innerHTML = '❌ Error al acortar con TinyURL';
+            document.querySelector('#acortar').checked = false;
+            document.querySelector('#acortar').disabled = false; // reactivar tras procesar
+          })
+          .acortarUrl();  
+        }
+      else {
+        document.querySelector('#url').value = '<?!= url ?>';
+        document.querySelector('#msg').innerHTML = '';
+        document.querySelector('#acortar').disabled = false; // reactivar tras procesar
+      }
+      
+      // No se debe reactivar checkbox aquí dado que google.script.run es asíncrono,
+      // puede que acortar() retorne, reactivando la casilla, antes de que finalice
+    }
+ 
   </script>
   
 </html>

@@ -11,13 +11,14 @@
 
 // Constantes generales del script
 
-var VERSION = 'Versión: 1.0 (febrero 2020)';
+var VERSION = 'Versión: 1.1 (febrero 2020)';
 
 var AJUSTES_P = {
   'inicializado' : 'true',
   'sAvanzar' : '3',
   'sRecargar' : '60',
   'msFundido' : '1500',
+  'colorFondo' : '#ffffff',
   'iniciar' : 'on',
   'repetir' : 'on',
   'eliminarMenu' : 'on',
@@ -27,7 +28,8 @@ var AJUSTES_P = {
 var INSET_INFERIOR = 28; // Altura en px barra con botones inferior en presentación incrustada
 var NUMERO_MAGICO = 14.25; // x ancho/alto para obtener el valor en px del recorte lateral que elimina bandas negras
 var INSET_BORDES = 2;      // Desplazamiento adicional para eliminar todos los bordes mediante clip-path / inset (CSS) 
-  
+var TINYURL = 'https://tinyurl.com/api-create.php?url=' // URL para acortar usando servicio de TinyURL  
+
 // Vamos a por faena...
 
 function onOpen() {
@@ -95,7 +97,11 @@ function configurar() {
     
     // Inicialmente la publicación está desactivada
     
-    PropertiesService.getDocumentProperties().setProperty('publicar', ' false');
+    PropertiesService.getDocumentProperties().setProperty('publicar', 'false');
+    
+    // ...y no tenemos URL corto
+    
+    PropertiesService.getDocumentProperties().setProperty('urlCorto', 'false');
 
   }
   
@@ -110,6 +116,7 @@ function configurar() {
   panel.sAvanzar =  ajustes.getProperty('sAvanzar');
   panel.sRecargar = ajustes.getProperty('sRecargar');
   panel.msFundido = ajustes.getProperty('msFundido');
+  panel.colorFondo = ajustes.getProperty('colorFondo');
   panel.iniciar =  ajustes.getProperty('iniciar') == 'on' ? 'checked' : '' ;
   panel.repetir =  ajustes.getProperty('repetir') == 'on' ? 'checked' : '' ;
   panel.eliminarMenu = ajustes.getProperty('eliminarMenu')  == 'on' ? 'checked' : '';
@@ -145,6 +152,7 @@ function actualizarAjustes(form) {
     'sAvanzar' : form.sAvanzar,
     'sRecargar' : form.sRecargar,
     'msFundido' : form.msFundido,
+    'colorFondo' : form.colorFondo,
     'iniciar' : form.iniciar, // 'on' o NULL
     'repetir' : form.repetir, // 'on' o NULL
     'eliminarMenu' : form.eliminarMenu, // 'on' o NULL
@@ -185,12 +193,31 @@ function obtenerRevisiones() {
  
   }
 }
+
+function acortarUrl() {
   
+  // 
+  
+  var urlCorto = PropertiesService.getDocumentProperties().getProperty('urlCorto');
+  
+  if (urlCorto == null) {
+    
+    // No se ha acortado aún, lo haremos ahora guardaremos URL corto en propiedades
+  
+    urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();
+    PropertiesService.getDocumentProperties().setProperty('urlCorto', urlCorto);
+    Logger.log('Llamada a TinyURL');
+  }
+  
+  return urlCorto;
+  
+}
+    
 function publicar() {
      
   var slideId = SlidesApp.getActivePresentation().getId();
   var ultimaRevId = obtenerRevisiones();
- 
+  
   // Publicar última revisión de la presentación
  
   try {
@@ -199,21 +226,24 @@ function publicar() {
                            publishedOutsideDomain: true,
                            publishAuto: true}, 
                           slideId, ultimaRevId);
-    
+            
     PropertiesService.getDocumentProperties().setProperty('publicar', 'true');
-        
-    if (ScriptApp.getService().isEnabled() == true) { // ==
+    
+    // Si no se ha configurado previamente, establecer valores por defecto
+    
+    if (PropertiesService.getDocumentProperties().getProperty('inicializado') != 'true') {
+      ajustesPorDefecto();
+    }    
+    
+    if (ScriptApp.getService().isEnabled() == true) {
       
       // La webapp ya ha sido previamente publicada, obtener URL público (¡con V8 devuelve el privado /dev! a 18/02/02)
       
       var urlWebApp = ScriptApp.getService().getUrl();
       var panel = HtmlService.createTemplateFromFile('infoPublicada');
-      
-      // V8
-      // panel.mensaje = `🌐️ URL de la presentación publicada:<br><br><a target="_blank" href="${urlWebApp}">${urlWebApp}</a>`;
-      
-      panel.mensaje = '🌐️ URL de la presentación publicada:<br><br><a target="_blank" href="' + urlWebApp + '">' + urlWebApp + '</a>';
-      SlidesApp.getUi().showModalDialog(panel.evaluate().setWidth(700).setHeight(150), '🔄 AutoSlides');
+            
+      panel.url = urlWebApp;
+      SlidesApp.getUi().showModalDialog(panel.evaluate().setWidth(700).setHeight(175), '🔄 AutoSlides');
       
     } else {
       
@@ -232,7 +262,6 @@ function publicar() {
   }
 
 }  
-
 
 function despublicar() {
 
@@ -261,10 +290,9 @@ function despublicar() {
 
 function doGet(e) {
 
-  // Generar formulario web
+  // Generar página web con presentación incrustada
 
-  var urlPres = 'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
-  var formularioWeb = HtmlService.createTemplateFromFile('slidesEmbed');
+  var incrustaWeb = HtmlService.createTemplateFromFile('slidesEmbed');
   
   // Rellenar elementos de plantilla
   
@@ -272,20 +300,25 @@ function doGet(e) {
   var aspecto = 100 * SlidesApp.getActivePresentation().getPageHeight() / SlidesApp.getActivePresentation().getPageWidth();
   var offsetPx = ajustes.eliminarBordes == 'on' ? INSET_BORDES : 0;
   
-  formularioWeb.url =  'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
-  formularioWeb.iniciar = ajustes.iniciar == 'on' ? 'true' : 'false';
-  formularioWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';
-  formularioWeb.msAvanzar = (+ajustes.sAvanzar * 1000).toString();
-  formularioWeb.msFundido = ajustes.msFundido;
-  formularioWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
-  formularioWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
-  formularioWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
-  formularioWeb.insetSuperior = offsetPx.toString();
+  incrustaWeb.url =  'https://docs.google.com/presentation/d/' + SlidesApp.getActivePresentation().getId() + '/embed';
+  incrustaWeb.iniciar = ajustes.iniciar == 'on' ? 'true' : 'false';
+  incrustaWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';
+  incrustaWeb.msAvanzar = (+ajustes.sAvanzar * 1000).toString();
+  incrustaWeb.msFundido = ajustes.msFundido;
+  incrustaWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
+  incrustaWeb.colorFondo = ajustes.colorFondo;
+  incrustaWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
+  incrustaWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
+  incrustaWeb.insetSuperior = offsetPx.toString();
 
   // Para "truco" CSS que hace el iframe responsive
-  
-  formularioWeb.aspecto = aspecto.toString();
-  
-  return formularioWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 
+  incrustaWeb.aspecto = aspecto.toString();
+  
+  return incrustaWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+
+}
+
+function test() {
+  PropertiesService.getDocumentProperties().deleteAllProperties();
 }

@@ -19,21 +19,21 @@
       <form class="col s12" id="formConfigurar">       
         <div class="row">
         <div class="input-field col s12">
-          <label for="numFil">Avance automático cada (s)</label>
+          <label for="sAvanzar">Avance automático cada (s)</label>
           <input class="validate" type="number" name="sAvanzar" value="<?= sAvanzar ?>" min="1" step="1" id="sAvanzar">
         </div>
         </div>
         
         <div class="row">
         <div class="input-field col s12">
-          <label for="numFil">Recarga presentación cada (s)</label>
+          <label for="v">Recarga presentación cada (s)</label>
           <input class="validate" type="number" name="sRecargar" value="<?= sRecargar ?>" min="1" step="1" id="sRecargar">
         </div>
         </div> 
         
         <div class="row">
         <div class="input-field col s12">
-          <label for="numFil">Retardo tras fundido recarga (ms)</label>
+          <label for="msFundido">Retardo tras fundido recarga (ms)</label>
           <input class="validate" type="number" name="msFundido" value="<?= msFundido ?>" min="1000" step="100" id="msFundido">
         </div>
         </div>
@@ -81,7 +81,16 @@
             <span>Eliminar bordes de marco</span>
           </label>
         </div>
-        </div>        
+        </div>   
+        
+       <div class="row">
+         <div class="input-field col s12">
+           <label for="colorFondo">
+             <input type="color" name="colorFondo" value="<?= colorFondo ?>" id="colorFondo">
+             <span>Color de fondo</span>
+           </label>
+         </div>
+       </div>
         
       </form>
     </div>

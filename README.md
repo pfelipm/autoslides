@@ -193,6 +193,7 @@ function actualizarAjustes(form) {
     'sAvanzar' : form.sAvanzar,
     'sRecargar' : form.sRecargar,
     'msFundido' : form.msFundido,
+    'colorFondo' : form.colorFondo,
     'iniciar' : form.iniciar, // 'on' o NULL
     'repetir' : form.repetir, // 'on' o NULL
     'eliminarMenu' : form.eliminarMenu, // 'on' o NULL
@@ -205,7 +206,7 @@ function actualizarAjustes(form) {
 
 - Localizar la versión más reciente de la presentación (función `obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (función `despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se desplegará otro panel lateral con las correspondientes instrucciones para el usuario (archivo `instruccionesWebApp.html`).
 
-En caso de que se detecte que la webapp ya ha sido publicada, simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. A continuación se identificará la última edición (versión) de la presentación y se publicará, de modo análogo a como se haría  manualmente con `Archivo` ⏩ `Publicar`. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que tenerlo en cuenta para tener la seguridad de que alcanzamos realmente la última.
+  En caso de que se detecte que la webapp ya ha sido publicada, simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. A continuación se identificará la última edición (versión) de la presentación y se publicará, de modo análogo a como se haría  manualmente con `Archivo` ⏩ `Publicar`. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que contemplar esta posibilidad paraa tener la certeza de que alcanzamos realmente la que representa el estado de edición más reciente de la presentación.
 
 ```javascript
 ...
@@ -225,12 +226,17 @@ try {
   }
 ...
 ```
+  Esta parte del código se apoya en la función auxiliar `acortarUrl`, que obtiene una versión acortada del URL de la webapp usando el servicio gratuito de [TinyURL](https://tinyurl.com). Esto se consigue recuperando un URL especialmente formado por medio de la clase `UrlFetchApp`:
+  
+```
+urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();
+```
 
 >La publicación de webapps Apps Script tiene en estos momentos bastantes sutilezas y, por qué no decirlo, aristas, que [la llegada](https://groups.google.com/forum/?utm_medium=email&utm_source=footer#!msg/google-apps-script-community/0snPFcUqt40/lH9Dylk7GAAJ) del motor de ejecución `V8` no han hecho sino afilar. La cosa da para extenderse de manera específica, así que mejor hablaremos de ello en otra ocasión.
 
 - Generar y devolver al navegador del usuario que accede a la presentación publicada el **URL de la página web** en la que se encuentra incrustada, de acuerdo con las preferencias del usuario (función `doGet`). Aquí encontramos más scriptlets explícitos que parametrizan los ajustes del URL de incrustación, cuya dirección base no es idéntica a la que se obtiene al hacer `Archivo` ⏩ `Publicar`, sino que se obtiene a partir del URL de edición + sufijo `/embed`. Este URL está enterrado en el código HTML que devuelve la webapp, pero puede ser obtenido fácilmente. Esto hace que, técnicamente, el acceso a la presentación (con este URL) siempre será posible para los usuarios con permisos de (al menos) lectura sobre ella, con independencia de su estado de publicación, pero será imposible para aquellos a los que no se les haya concedido permisos de acceso explícitos sobre ella (los que la visualizan de manera pública).
 
-Por otro lado, la página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
+  Por otro lado, la página web genererada se devuelve con `XFrameOptionsMode.ALLOWALL` para que admita ser incrustada en cualquier sitio web.
 
 ```javascript
 function doGet(e) {

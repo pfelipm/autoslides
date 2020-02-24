@@ -24,13 +24,14 @@ AutoSlide dispone de las siguientes características y funciones:
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
   + Tiempo de avance entre diapositivas (s).
-  + Periodicidad de recarga de la presentación (s). Se recomienda utilizar un tiempo superior al necesario para al menos un pase completo de todas las diapositivas.
+  + Periodicidad de recarga de la presentación (s). Se recomienda utilizar un tiempo superior al necesario para realizar al menos un pase completo de todas las diapositivas.
   + Retardo tras fundido en recarga (ms). Se recomienda un valor de al menos 1500 ms para lograr una transición suave sin artefactos visuales.
   + Inicio automático (sí / no).
   + Repetición cíclica (sí / no).
   + Eliminación del panel de botones habitual en las presentaciones incrustadas (sí / no).
   + Eliminación de las bandas laterales negras habituales en las presentaciones incrustadas (sí / no).
   + Eliminación del borde del marco de incrustación (sí / no).
+  + Selección del color de fondo de la página web que inscrusta la presentación.
 + Detección de gráficos de hoja de cálculo vinculados en la presentación. De haberlos, AutoSlides mostrará una advertencia y facilitará instrucciones para que el usuario cree, si así lo desea, un activador por tiempo que deberá vincularse a una función específica del script (`refrescarGraficosHdc`) para actualizar también estos gráficos a intervalos específicos a partir de sus datos numéricos de origen.
 
 ![esquema](https://user-images.githubusercontent.com/12829262/74886127-9e48b480-5377-11ea-80ca-09f626e40f0d.png)
@@ -46,7 +47,7 @@ Estos gráficos han sido insertados en la **presentación** [AutoSlides (demo)](
 
 AutoSlides es capaz de publicar la presentación y generar una página web con ella incrustada.
 
-![74864895-8f024080-5350-11ea-8a90-a9800b2bc2d5](https://user-images.githubusercontent.com/12829262/74886289-fda6c480-5377-11ea-9809-be1a3d005dc2.gif)
+![AutoSlides v1 1-1](https://user-images.githubusercontent.com/12829262/75165051-0e618c80-5722-11ea-8134-d6a2a44845b6.gif)
 
 La presentación publicada, visible en la ventana del navegador (derecha), reflejará los cambios que eventualmente se vayan produciendo en la vista de edición (izquierda) sin que el usuario que la visualice deba recargar la página.
 

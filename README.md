@@ -75,9 +75,10 @@ Por último, si el usuario crea un activador Apps Script disparado por tiempo qu
 1. Obtén una copia de la **plantilla de AutoSlides** abriendo este enlace :point_right: [AutoSlides # plantilla](https://docs.google.com/presentation/d/1OVA_tBC5QM4vQhJeZzQLag7ktV2vPvWmVfcF46KO1_8/template/preview) :point_left: y a continuación haz clic en `Utilizar plantilla`.
 
 2. Edita tu presentación del modo habitual.
+
 3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` ⏩ `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74887855-73ad2a80-537c-11ea-8e90-c500de653000.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/75166223-d9563980-5723-11ea-9108-de683a6fff99.png"></p>
 
 4. Si AutoSlides detecta que la presentación contiene gráficos de hoja de cálculo vinculados mostrará un mensaje y te facilitará instrucciones para indicarte cómo puedes configurar un activador por tiempo que también los actualice. Este paso es totalmente **opcional**, no tienes por qué utilizar gráficos de hojas de cálculo en tus presentaciones o, incluso si lo haces, configurar un activador para actualizarlos.
 

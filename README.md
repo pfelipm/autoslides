@@ -180,7 +180,9 @@ function ajustesPorDefecto() {
 }
 ```
 
-- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API de cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (función `actualizarAjustes`). A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. Una asignación directa tipo `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento.
+- **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API de cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (función `actualizarAjustes`). A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor.
+
+  Una asignación directa tipo: `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento.
 
 ```javascript
 function actualizarAjustes(form) {

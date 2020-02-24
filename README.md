@@ -20,7 +20,7 @@ Las presentaciones de Google disponen de una función de publicación que facili
 # ¿Qué puede hacer AutoSlides?
 AutoSlide dispone de las siguientes características y funciones:
 + Publicación de la presentación (de modo análogo a `Archivo` ⏩ `Publicar`) e incrustación por medio de una webapp integrada. El despliegue inicial como webapp debe ser realizado manualmente por el propietario de la presentación, pero a partir de ese momento ya es posible controlar su estado de publicación utilizando los propios menús de AutoSlides.
-+ Actualización automática de la presentación incrustada a intervalos establecidos por el usuario, utilizando una transición suave al recargarla. De este modo se pueden introducir modificaciones en las diapositivas, que acabarán siendo visualizadas en cualquier soporte web donde se esté mostrando la webapp.
++ Actualización automática de la presentación incrustada a intervalos establecidos por el usuario, utilizando una transición suave al recargarla. De este modo se pueden introducir modificaciones en las diapositivas, que acabarán reflejándose en cualquier soporte web donde se esté mostrando la webapp.
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
   + Tiempo de avance entre diapositivas (s).
@@ -120,7 +120,7 @@ La mayor parte del código vive dentro del archivo `Código.gs`. En él se encue
 ```javascript
 function refrescarGraficosHdc() { 
 
-  // Versión V8. No se utiliza para seguir ejecutando con Rhino por bug V8 y ScriptApp.GetService().getUrl()
+  // Versión V8: No se utiliza por bug V8 y ScriptApp.GetService().getUrl()
   // https://groups.google.com/d/topic/google-apps-script-community/0snPFcUqt40/discussion
   // SlidesApp.getActivePresentation().getSlides().map(diapo => {diapo.getSheetsCharts().map(grafico => {grafico.refresh();});});
  
@@ -166,13 +166,13 @@ function refrescarGraficosHdc() {
 <?}?>
 ```
 
-- **Restablecer los ajustes** por defecto cuando se utiliza el botón correspondiente del panel lateral de configuración (función `ajustesPorDefecto`). No se modifica en este caso el valor de la propiedad `publicar`, que es independiente de los ajustes de publicación.
+- **Restablecer los ajustes** por defecto cuando se utiliza el botón correspondiente del panel lateral de configuración (función `ajustesPorDefecto`). No se modifica en este caso el valor de las propiedades `publicar` ni `urlCorto`, que son independientes de los ajustes de publicación.
 
 ```javascript
 function ajustesPorDefecto() {
 
   // Invocado desde panelLateral_js
-  // Restablecer ajustes por defecto (false para preservar propiedad 'publicar' actual)
+  // Restablecer ajustes por defecto (,false para preservar otras propiedades)
   PropertiesService.getDocumentProperties().setProperties(AJUSTES_P, false);
   
   // Devolver a panelLateral_js para que actualice formulario
@@ -182,7 +182,7 @@ function ajustesPorDefecto() {
 
 - **Recibir los ajustes** establecidos por el usuario desde el panel lateral de configuración vía la llamada de la API de cliente JavaScript `google.script.run.actualizarAjustes($('#formConfigurar').get(0));` y actualizar las propiedades del documento (función `actualizarAjustes`).
 
-A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. Una asignación directa tipo: `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento.
+  A destacar que si el objeto `form` devuelto contiene casillas de verificación que no están activadas **no existen propiedades que las representen** en el objeto recibido del lado del servidor. Una asignación directa tipo: `PropertiesService.getDocumentProperties().setProperties(form)` daría lugar a estupendas confusiones dado que la desactivación de una casilla en el formulario no se trasladaría a su representación en la propiedad del documento.
 
 ```javascript
 function actualizarAjustes(form) {

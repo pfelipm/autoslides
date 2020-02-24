@@ -318,7 +318,3 @@ function doGet(e) {
   return incrustaWeb.evaluate().setTitle(SlidesApp.getActivePresentation().getName()).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 
 }
-
-function test() {
-  PropertiesService.getDocumentProperties().deleteAllProperties();
-}

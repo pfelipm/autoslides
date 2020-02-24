@@ -206,7 +206,7 @@ function actualizarAjustes(form) {
 
 - Localizar la versión más reciente de la presentación (función `obtenerRevisiones`) para **publicarla** (`publicar`) o **dejar de publicarla** (función `despublicar`). El script depende para ello de la API avanzada de Drive. Si no se ha producido la publicación inicial del script como webapp se desplegará otro panel lateral con las correspondientes instrucciones para el usuario (archivo `instruccionesWebApp.html`).
 
-  En caso de que se detecte que la webapp ya ha sido publicada, simplemente se mostrará su URL público (archivo `infoPublicada.html`). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. A continuación se identificará la última edición (versión) de la presentación y se publicará, de modo análogo a como se haría  manualmente con `Archivo` ⏩ `Publicar`. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que contemplar esta posibilidad paraa tener la certeza de que alcanzamos realmente la que representa el estado de edición más reciente de la presentación.
+  En caso de que se detecte que la webapp ya ha sido publicada, simplemente se mostrará su URL público (archivo `infoPublicada.html`), que además contiene algo de JavaScript para acortarlo, copiarlo al portapapeles o sencillamente probarlo (ya sé, debería haberlo movido a un archivo independiente, pero era poca cosa). Todo ello bien encerrado entre bloques `try{} .. catch{}` para cazar posibles errores en tiempo de ejecución, de los que preparando el código estos días me he encontrado alguno que otro, quizás como consecuencia de los [recientes cambios](https://developers.google.com/apps-script/guides/v8-runtime) en la plataforma de Apps Script. A continuación se identificará la última edición (versión) de la presentación y se publicará, de modo análogo a como se haría  manualmente con `Archivo` ⏩ `Publicar`. Mucho cuidado con el token que señaliza que hay más versiones no devueltas al interrogar a la API de Drive. Del mismo modo que el caso de otras APIs avanzadas (me viene ahora a la memoria la de Classroom), hay que contemplar esta posibilidad paraa tener la certeza de que alcanzamos realmente la que representa el último estado de edición.
 
 ```javascript
 ...
@@ -226,9 +226,13 @@ try {
   }
 ...
 ```
-  Esta parte del código se apoya en la función auxiliar `acortarUrl`, que obtiene una versión acortada del URL de la webapp usando el servicio gratuito de [TinyURL](https://tinyurl.com). Esto se consigue recuperando un URL especialmente formado por medio de la clase `UrlFetchApp`:
+
+- Acortar el URL público de la webapp (función `acortarUrl`). Se recurre al servicio anónimo y gratuito de [TinyURL](https://tinyurl.com), al que se le realiza una petición `HTTPS` especialmente formada por medio de la clase `UrlFetchApp`. 
+Esta estrategia evita que el usuario tenga que registrarse en un servicio de enlaces cortos para obtener de él un token de uso, que posteriormente debería ser introducido en el código de AutoSlides.
   
 ```
+var TINYURL = 'https://tinyurl.com/api-create.php?url='  
+...
 urlCorto = UrlFetchApp.fetch(TINYURL + ScriptApp.getService().getUrl()).getContentText();
 ```
 
@@ -254,6 +258,7 @@ function doGet(e) {
   incrustaWeb.repetir = ajustes.repetir == 'on' ? 'true' : 'false';
   incrustaWeb.msAvanzar = (+ajustes.sAvanzar * 1000).toString();
   incrustaWeb.msFundido = ajustes.msFundido;
+  incrustaWeb.colorFondo = ajustes.colorFondo;
   incrustaWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
   incrustaWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
   incrustaWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
@@ -320,7 +325,7 @@ Esto resuelve la incrustación parametrizada, solo falta ahora que el marco inte
 ```
 Para que la recarga del contenido del marco interior (con la presentación) sea suave se juega con su propiedad `opacity`, sobre la que se ha establecido previamente una transición de 1 segundo. Además, gracias a una [promesa JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise), se introduce un retardo de `<?= msFundido ?>` milisengudos antes de volver a hacer visible la presentación.
 
-Todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar` y obra en consecuencia en el momento en que se genera la página y expanden también el resto de scriptlets:
+Todo este bloque que resuelve la incrustación y refresco de la presentación está gobernado por un scriptlet no explícito que vigila el valor de la propiedad del documento `publicar` y obra en consecuencia en el momento en que se genera la página y expanden también el resto de scriptlets. Un segundo scriptlet, por su parte, activa o desactiva el bloque JavaScript encargado de la recarga periódica del marco que incrusta la presentación:
 
 ```html
 <body> 
@@ -330,9 +335,16 @@ Todo este bloque que resuelve la incrustación y refresco de la presentación es
   <? if (PropertiesService.getDocumentProperties().getProperty('publicar') == 'true' && 
          PropertiesService.getDocumentProperties().getProperty('inicializado') == 'true' ) { ?>
 
-    <!-- Aquí va la parte que muestra / refresca la presentación -->
-    ...
+    <!-- Aquí va el bloque HTML que incrusta la presentación... -->
 
+    <!-- Si intervalo de recarga = 0 no recargaremos nunca -->
+  
+    <? if (PropertiesService.getDocumentProperties().getProperty('sRecargar') != '0') { ?>
+
+      <!-- ...y aquí va el bloque JavaScript responsable de su recarga periódica -->
+    
+    <? } ?>
+  
   <? } else {?>
 
     <h1>La presentación no está disponible</h1>

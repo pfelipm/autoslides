@@ -24,7 +24,7 @@ AutoSlide dispone de las siguientes características y funciones:
 + Incrustación totalmente *responsive*, teniendo en cuenta la relación de aspecto de las diapositivas de la presentación (16:9, 16:10, 4:3, etc).
 + Personalización del modo en que se realiza la incrustación por medio de un panel de control:
   + Tiempo de avance entre diapositivas (s).
-  + Periodicidad de recarga de la presentación (s). Se recomienda utilizar un tiempo superior al necesario para realizar al menos un pase completo de todas las diapositivas.
+  + Periodicidad de recarga de la presentación (s).
   + Retardo tras fundido en recarga (ms). Se recomienda un valor de al menos 1500 ms para lograr una transición suave sin artefactos visuales.
   + Inicio automático (sí / no).
   + Repetición cíclica (sí / no).
@@ -76,7 +76,7 @@ Por último, si el usuario crea un activador Apps Script disparado por tiempo qu
 
 2. Edita tu presentación del modo habitual.
 
-3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` ⏩ `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.
+3. Cuando estés listo para publicar tu presentación, haz clic en `🔄 AutoSlides` ⏩ `⚙️ Configurar` para establecer los distintos ajustes que afectarán al modo en que se mostrarán tus diapositivas.  Se recomienda establecer un intervalo de recarga holgadamente superior al necesario para realizar al menos un pase completo de todas las diapositivas.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75166223-d9563980-5723-11ea-9108-de683a6fff99.png"></p>
 
@@ -88,9 +88,9 @@ Por último, si el usuario crea un activador Apps Script disparado por tiempo qu
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/74886891-a99cdf80-5379-11ea-8707-5289c6a81876.png"></p>
 
-6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites.
+6. Finalmente, ejecuta nuevamente `🔄 AutoSlides` ⏩ `🌐 Obtener URL público` para activar totalmente la webapp y consigue el URL de la versión publicada de tu presentación. Puedes abrirlo directamente en tu navegador, enviarlo por correo eléctronico, difundirlo en plataformas sociales o utilizarlo como origen de incrustación, por ejemplo en un sitio web creado con Google Sites. El URL puede ser acortado (mediante el servicio gratuito de TinyURL y copiado al portapapeles.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/74888641-dd2e3880-537e-11ea-9923-e383b54ca195.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/75167570-df4d1a00-5725-11ea-9f87-e9772d9c071c.png"></p>
 
 7. Si en algún momento deseas que tu presentación deje de ser visible públicamente, solo tienes que hacer `🔄 AutoSlides` ⏩ `🔻 Detener publicación`.
 

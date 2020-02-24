@@ -35,7 +35,6 @@
     google.script.run
       .withSuccessHandler(function() {
         M.toast({html: '✔️ Ajustes guardados'});
-        $('#botonGuardar').prop('disabled', true);
         // google.script.host.close();
       })
       .withFailureHandler(function() {
@@ -48,6 +47,10 @@
   function on_botonReset() {
 
   // Reajustar valores de configuración por defecto
+  
+  // Desactivar botón
+    
+  $('#botonReset').prop('disabled', true);
   
     google.script.run
       .withSuccessHandler(function(ajustes) {
@@ -62,9 +65,12 @@
         $('#eliminarBandas').prop('checked', ajustes.eliminarBandas == 'on' ? true : false);
         $('#eliminarBordes').prop('checked', ajustes.eliminarBordes == 'on' ? true : false);
         $('#botonGuardar').prop('disabled', true);
+        $('#botonReset').prop('disabled', false);
+
       })
       .withFailureHandler(function() {
         M.toast({html: '❌ Error al realizar la operación'});
+        $('#botonReset').prop('disabled', false);
       })
       .ajustesPorDefecto();  
   

@@ -18,23 +18,29 @@
         frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
       </iframe>
     </div>
-    
-  <script>
   
-    setInterval(function(){
+    <!-- Si t recarga = 0 no recargaremos nunca -->
+  
+    <? if (PropertiesService.getDocumentProperties().getProperty('sRecargar') != '0') { ?>
+
+      <script>
+  
+        setInterval(function(){
       
-      document.getElementById("marco2").style.opacity = 0;
+          document.getElementById("marco2").style.opacity = 0;
       
-      sleep(1000).then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";});
-      sleep(<?= msFundido ?>).then(() => {document.getElementById("marco2").style.opacity = 1;});
+          sleep(1000).then(() => {document.getElementById('marco2').src="<?= url ?>?start=<?= iniciar ?>&loop=<?= repetir ?>&delayms=<?= msAvanzar ?>";});
+          sleep(<?= msFundido ?>).then(() => {document.getElementById("marco2").style.opacity = 1;});
            
-    }, <?= msRecargar ?>);
+        }, <?= msRecargar ?>);
     
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
     
-  </script>
+      </script>
+  
+    <? } ?>
   
   <? } else {?>
     

@@ -266,8 +266,8 @@ function doGet(e) {
   incrustaWeb.msFundido = ajustes.msFundido;
   incrustaWeb.colorFondo = ajustes.colorFondo;
   incrustaWeb.msRecargar = (+ajustes.sRecargar * 1000).toString();
-  incrustaWeb.insetInferior = ajustes.eliminarMenu == 'on' ? (INSET_INFERIOR  + offsetPx).toString() : '0';
-  incrustaWeb.insetLateral = ajustes.eliminarBandas == 'on' ? (100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
+  incrustaWeb.insetInferior = ajustes.eliminarMenu == 'on' ? Math.ceil(INSET_INFERIOR  + offsetPx).toString() : '0';
+  incrustaWeb.insetLateral = ajustes.eliminarBandas == 'on' ? Math.ceil(100 * NUMERO_MAGICO / aspecto + offsetPx).toString() : '0';
   incrustaWeb.insetSuperior = offsetPx.toString();
 
   // Para "truco" CSS que hace el iframe responsive

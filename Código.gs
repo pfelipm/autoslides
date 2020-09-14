@@ -233,7 +233,7 @@ function publicar() {
     
     if (ScriptApp.getService().isEnabled() == true) {
       
-      // La webapp ya ha sido previamente publicada, obtener URL público (¡con V8 devuelve el privado /dev! a 18/02/02)
+      // La webapp ya ha sido previamente publicada, obtener URL público (¡con V8 devuelve el privado /dev! a 18/02/20)
       
       var urlWebApp = ScriptApp.getService().getUrl();
       var panel = HtmlService.createTemplateFromFile('infoPublicada');
